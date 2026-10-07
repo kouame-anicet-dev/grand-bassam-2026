@@ -1,0 +1,2526 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inscription & Tarif – Sortie Plage Grand-Bassam 2026</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --ocean: #0a7490;
+      --ocean-light: #12a3c4;
+      --ocean-glow: rgba(18, 163, 196, 0.20);
+      --sand: #f5deb3;
+      --sand-dark: #d4a96a;
+      --sunset: #e8834a;
+      --sunset-glow: rgba(232, 131, 74, 0.40);
+      --green: #22c55e;
+      --green-wa: #25D366;
+      --white: #ffffff;
+      --dark: #060f18;
+      --dark2: #081422;
+      --border: rgba(255, 255, 255, 0.09);
+      --card-bg: rgba(255, 255, 255, 0.04);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--dark);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    }
+
+    /* ══ SCROLL PROGRESS ══ */
+    #sprogress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      z-index: 2001;
+      background: linear-gradient(90deg, var(--ocean-light), var(--sunset), var(--sand));
+      width: 0%;
+      border-radius: 0 2px 2px 0;
+      transition: width .1s;
+    }
+
+    /* ══ NAVBAR ══ */
+    .navbar {
+      background: rgba(6, 15, 24, .88) !important;
+      backdrop-filter: blur(22px);
+      padding: 14px 0;
+      position: fixed;
+      width: 100%;
+      top: 3px;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, .07);
+      transition: background .4s, padding .3s, box-shadow .3s;
+    }
+
+    .navbar.scrolled {
+      background: rgba(6, 15, 24, .98) !important;
+      padding: 10px 0;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, .4);
+    }
+
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--sand) !important;
+      letter-spacing: 1px;
+    }
+
+    .navbar-brand span {
+      color: var(--white);
+    }
+
+    .wave-icon {
+      display: inline-block;
+      animation: waveA 2.5s ease-in-out infinite;
+    }
+
+    @keyframes waveA {
+
+      0%,
+      100% {
+        transform: rotate(0)
+      }
+
+      25% {
+        transform: rotate(-15deg)
+      }
+
+      75% {
+        transform: rotate(15deg)
+      }
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, .82) !important;
+      font-weight: 500;
+      font-size: .9rem;
+      margin: 0 4px;
+      transition: color .2s;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: var(--sand);
+      transition: width .3s;
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+    }
+
+    .nav-link:hover {
+      color: var(--sand) !important;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .btn-hero-nav {
+      background: var(--sunset);
+      color: white;
+      border: none;
+      padding: 9px 22px;
+      border-radius: 50px;
+      font-size: .88rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 4px 18px var(--sunset-glow);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .btn-hero-nav:hover {
+      transform: translateY(-2px);
+      color: white;
+      box-shadow: 0 8px 28px var(--sunset-glow);
+    }
+
+    /* ══ HERO ══ */
+    .page-hero {
+      min-height: 46vh;
+      background: linear-gradient(155deg, #050e18 0%, #083048 55%, #0b5570 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 120px 0 68px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 85% 40%, rgba(18, 163, 196, .14), transparent);
+    }
+
+    .deco-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(18, 163, 196, .10);
+      pointer-events: none;
+    }
+
+    .r1 {
+      width: 400px;
+      height: 400px;
+      top: -120px;
+      right: -90px;
+      animation: spin 28s linear infinite;
+    }
+
+    .r2 {
+      width: 230px;
+      height: 230px;
+      top: 5px;
+      right: 75px;
+      border-color: rgba(232, 131, 74, .12);
+      animation: spin 18s linear infinite reverse;
+    }
+
+    .r3 {
+      width: 130px;
+      height: 130px;
+      bottom: 20px;
+      left: 9%;
+      animation: spin 14s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(60px);
+    }
+
+    .orb-a {
+      width: 300px;
+      height: 300px;
+      background: rgba(18, 163, 196, .11);
+      top: 8%;
+      right: 5%;
+      animation: orbF 9s ease-in-out infinite;
+    }
+
+    .orb-b {
+      width: 180px;
+      height: 180px;
+      background: rgba(232, 131, 74, .09);
+      bottom: 16%;
+      left: 6%;
+      animation: orbF 7s ease-in-out infinite 3.5s;
+    }
+
+    @keyframes orbF {
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1)
+      }
+
+      50% {
+        transform: translateY(-28px) scale(1.05)
+      }
+    }
+
+    .page-hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      font-size: .76rem;
+      font-weight: 600;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--ocean-light);
+      margin-bottom: 12px;
+      opacity: 0;
+      transform: translateX(-28px);
+      animation: slideRight .8s .2s ease both;
+    }
+
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.08;
+      opacity: 0;
+      transform: translateY(26px);
+      animation: slideUp .9s .4s ease both;
+    }
+
+    .hero-h1 .shimmer {
+      background: linear-gradient(90deg, var(--ocean-light), #7be8ff, var(--ocean-light));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-style: italic;
+      animation: shimmer 3s linear infinite;
+    }
+
+    @keyframes shimmer {
+      to {
+        background-position: 200% center
+      }
+    }
+
+    .hero-sub {
+      color: rgba(255, 255, 255, .55);
+      font-size: 1rem;
+      margin-top: 14px;
+      font-weight: 300;
+      max-width: 560px;
+      line-height: 1.8;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp .8s .6s ease both;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp .8s .8s ease both;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, .10);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 50px;
+      padding: 8px 18px;
+      font-size: .84rem;
+      font-weight: 500;
+      transition: background .25s, transform .2s;
+    }
+
+    .hero-pill:hover {
+      background: rgba(255, 255, 255, .20);
+      transform: translateY(-2px);
+    }
+
+    .hero-pill i {
+      color: var(--ocean-light);
+      font-size: .8rem;
+    }
+
+    .hero-waves {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    @keyframes slideRight {
+      from {
+        opacity: 0;
+        transform: translateX(-28px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    /* ══ SCROLL REVEAL ══ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .reveal.from-l {
+      transform: translateX(-32px);
+    }
+
+    .reveal.from-l.visible {
+      transform: none;
+    }
+
+    .reveal.from-r {
+      transform: translateX(32px);
+    }
+
+    .reveal.from-r.visible {
+      transform: none;
+    }
+
+    .reveal.d1 {
+      transition-delay: .08s
+    }
+
+    .reveal.d2 {
+      transition-delay: .16s
+    }
+
+    .reveal.d3 {
+      transition-delay: .24s
+    }
+
+    .reveal.d4 {
+      transition-delay: .32s
+    }
+
+    .reveal.d5 {
+      transition-delay: .40s
+    }
+
+    .reveal.d6 {
+      transition-delay: .48s
+    }
+
+    /* ══ TARIF SECTION ══ */
+    #tarif {
+      background: var(--dark2);
+      padding: 90px 0 0;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    #tarif::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 280px;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(10, 116, 144, .08), transparent);
+      pointer-events: none;
+    }
+
+    .section-label {
+      font-size: .74rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ocean-light);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .section-title span {
+      color: var(--ocean-light);
+      font-style: italic;
+    }
+
+    /* ── Main price card ── */
+    .price-card {
+      background: linear-gradient(145deg, rgba(10, 116, 144, .22), rgba(6, 15, 24, .85));
+      border: 1.5px solid rgba(18, 163, 196, .35);
+      border-radius: 28px;
+      padding: 52px 48px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, .5);
+    }
+
+    .price-card::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(18, 163, 196, .14), transparent 70%);
+      pointer-events: none;
+    }
+
+    .price-card::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      left: -80px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232, 131, 74, .08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hot-badge {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: linear-gradient(135deg, var(--sunset), #c95e30);
+      color: white;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 50px;
+      box-shadow: 0 4px 16px var(--sunset-glow);
+      animation: badgePulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes badgePulse {
+
+      0%,
+      100% {
+        box-shadow: 0 4px 16px var(--sunset-glow)
+      }
+
+      50% {
+        box-shadow: 0 4px 28px rgba(232, 131, 74, .65)
+      }
+    }
+
+    .price-label {
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .45);
+      margin-bottom: 8px;
+    }
+
+    .price-display {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .price-currency {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--sand-dark);
+      margin-top: 14px;
+    }
+
+    .price-number {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(5rem, 10vw, 7rem);
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--sand), var(--sand-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .price-note {
+      font-size: .82rem;
+      color: rgba(255, 255, 255, .40);
+      margin-bottom: 36px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .price-note i {
+      color: var(--ocean-light);
+      font-size: .75rem;
+    }
+
+    .price-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 0 32px;
+    }
+
+    .includes-title {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--ocean-light);
+      margin-bottom: 20px;
+    }
+
+    .includes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    .include-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      transition: border-color .2s, background .2s, transform .2s;
+    }
+
+    .include-item:hover {
+      border-color: rgba(18, 163, 196, .3);
+      background: var(--ocean-glow);
+      transform: translateY(-2px);
+    }
+
+    .include-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      flex-shrink: 0;
+      background: rgba(18, 163, 196, .12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .9rem;
+      color: var(--ocean-light);
+    }
+
+    .include-text .it {
+      font-weight: 600;
+      font-size: .88rem;
+    }
+
+    .include-text .is {
+      font-size: .74rem;
+      color: rgba(255, 255, 255, .42);
+      margin-top: 2px;
+    }
+
+    .btn-reserve-main {
+      display: block;
+      width: 100%;
+      padding: 18px;
+      background: linear-gradient(135deg, var(--sunset), #d4663a);
+      border: none;
+      border-radius: 16px;
+      color: white;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 8px 30px var(--sunset-glow);
+      transition: transform .2s, box-shadow .2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-reserve-main::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .18), transparent);
+      transform: translateX(-110%);
+      transition: transform .6s ease;
+    }
+
+    .btn-reserve-main:hover::after {
+      transform: translateX(110%);
+    }
+
+    .btn-reserve-main:hover {
+      transform: translateY(-3px);
+      color: white;
+      box-shadow: 0 14px 40px rgba(232, 131, 74, .55);
+    }
+
+    .trust-row {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: .78rem;
+      color: rgba(255, 255, 255, .42);
+    }
+
+    .trust-item i {
+      color: var(--ocean-light);
+    }
+
+    /* ── Sidebar tarif ── */
+    .sidebar-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 26px 24px;
+      margin-bottom: 16px;
+    }
+
+    .sidebar-card h5 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--sand);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Countdown */
+    .countdown-card {
+      background: linear-gradient(135deg, rgba(232, 131, 74, .18), rgba(212, 80, 58, .10));
+      border: 1px solid rgba(232, 131, 74, .3);
+      border-radius: 20px;
+      padding: 26px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .countdown-card h6 {
+      font-size: .72rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--sunset);
+      margin-bottom: 16px;
+    }
+
+    .cd-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .cd-box {
+      background: rgba(255, 255, 255, .06);
+      border-radius: 10px;
+      padding: 10px 4px;
+    }
+
+    .cd-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--sand);
+    }
+
+    .cd-lbl {
+      font-size: .6rem;
+      color: rgba(255, 255, 255, .4);
+      margin-top: 3px;
+      letter-spacing: 1px;
+    }
+
+    /* Group prices */
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: .88rem;
+    }
+
+    .price-row:last-child {
+      border-bottom: none;
+    }
+
+    .price-row .places {
+      color: rgba(255, 255, 255, .7);
+    }
+
+    .price-row .total {
+      font-weight: 700;
+      color: var(--sand);
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+    }
+
+    .price-row .special {
+      font-size: .7rem;
+      color: #4ade80;
+      background: rgba(74, 222, 128, .10);
+      border-radius: 50px;
+      padding: 2px 8px;
+    }
+
+    /* Spots badge */
+    .spots-badge {
+      background: linear-gradient(135deg, var(--sunset), #d4603a);
+      border-radius: 10px;
+      padding: 12px 16px;
+      text-align: center;
+      box-shadow: 0 6px 20px var(--sunset-glow);
+      transition: all .5s ease;
+    }
+
+    .spots-badge.few {
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
+      box-shadow: 0 6px 20px rgba(220, 38, 38, .35);
+      animation: urgentPulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes urgentPulse {
+
+      0%,
+      100% {
+        transform: scale(1)
+      }
+
+      50% {
+        transform: scale(1.02)
+      }
+    }
+
+    .spots-badge .big {
+      font-size: 1.8rem;
+      font-weight: 900;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .spots-badge .sm {
+      font-size: .78rem;
+      color: rgba(255, 255, 255, .8);
+      margin-top: 2px;
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--green);
+      background: rgba(34, 197, 94, .12);
+      border: 1px solid rgba(34, 197, 94, .3);
+      border-radius: 20px;
+      padding: 3px 10px;
+      margin-bottom: 10px;
+    }
+
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: livePulse 1.2s ease-in-out infinite;
+    }
+
+    @keyframes livePulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: .4;
+        transform: scale(.7)
+      }
+    }
+
+    /* Payment pills */
+    .pay-methods {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .pay-pill {
+      border-radius: 10px;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .78rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .pay-pill:hover {
+      transform: translateY(-2px);
+    }
+
+    .pay-pill.wave {
+      background: rgba(22, 81, 240, .15);
+      border-color: rgba(22, 81, 240, .3);
+    }
+
+    .pay-pill.orange {
+      background: rgba(255, 102, 0, .15);
+      border-color: rgba(255, 102, 0, .3);
+    }
+
+    .pay-pill.mtn {
+      background: rgba(255, 204, 0, .10);
+      border-color: rgba(255, 204, 0, .3);
+      color: #ffcc00;
+    }
+
+    .pay-pill.cash {
+      background: rgba(74, 222, 128, .10);
+      border-color: rgba(74, 222, 128, .25);
+      color: #4ade80;
+    }
+
+    .pay-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .6rem;
+      font-weight: 900;
+    }
+
+    /* FAQ */
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: border-color .2s;
+    }
+
+    .faq-item:hover {
+      border-color: rgba(18, 163, 196, .3);
+    }
+
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 600;
+      font-size: .9rem;
+      gap: 10px;
+    }
+
+    .faq-q i {
+      color: var(--ocean-light);
+      font-size: .8rem;
+      transition: transform .3s;
+      flex-shrink: 0;
+    }
+
+    .faq-a {
+      font-size: .84rem;
+      color: rgba(255, 255, 255, .52);
+      margin-top: 12px;
+      line-height: 1.6;
+      display: none;
+    }
+
+    .faq-item.open .faq-q i {
+      transform: rotate(45deg);
+    }
+
+    .faq-item.open .faq-a {
+      display: block;
+    }
+
+    /* ══ SEPARATOR ══ */
+    .section-separator {
+      position: relative;
+      padding: 70px 0 0;
+      background: var(--dark2);
+      overflow: hidden;
+    }
+
+    .separator-wave {
+      display: block;
+      width: 100%;
+      line-height: 0;
+    }
+
+    .separator-inner {
+      background: linear-gradient(135deg, rgba(10, 116, 144, .10), rgba(18, 163, 196, .05));
+      border-top: 1px solid rgba(18, 163, 196, .18);
+      border-bottom: 1px solid rgba(18, 163, 196, .18);
+      padding: 32px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .separator-inner h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .separator-inner h4 span {
+      color: var(--ocean-light);
+      font-style: italic;
+    }
+
+    .separator-inner p {
+      color: rgba(255, 255, 255, .48);
+      font-size: .9rem;
+    }
+
+    /* ══ INSCRIPTION SECTION ══ */
+    #inscription {
+      background: var(--dark2);
+      padding: 70px 0 110px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Steps bar */
+    .steps-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 52px;
+    }
+
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .step-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .85rem;
+      font-weight: 700;
+      border: 2px solid var(--border);
+      color: rgba(255, 255, 255, .4);
+      transition: all .3s;
+    }
+
+    .step-circle.done {
+      background: var(--ocean-light);
+      border-color: var(--ocean-light);
+      color: white;
+    }
+
+    .step-circle.active {
+      background: var(--ocean);
+      border-color: var(--ocean-light);
+      color: white;
+      box-shadow: 0 0 0 4px var(--ocean-glow);
+    }
+
+    .step-label {
+      font-size: .72rem;
+      color: rgba(255, 255, 255, .45);
+      letter-spacing: .5px;
+    }
+
+    .step-line {
+      width: 80px;
+      height: 2px;
+      background: var(--border);
+      margin: 0 6px;
+      margin-bottom: 24px;
+    }
+
+    /* Form card */
+    .form-card {
+      background: linear-gradient(145deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .025));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 48px 44px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .4);
+      backdrop-filter: blur(6px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-card::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(18, 163, 196, .10), transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Inputs */
+    .form-group-label {
+      font-size: .8rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, .70);
+      margin-bottom: 7px;
+      letter-spacing: .3px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .form-group-label i {
+      color: var(--ocean-light);
+      font-size: .75rem;
+    }
+
+    .req {
+      color: var(--sunset);
+      margin-left: 2px;
+    }
+
+    .form-control,
+    .form-select {
+      background: rgba(255, 255, 255, .06) !important;
+      border: 1px solid rgba(255, 255, 255, .12) !important;
+      color: white !important;
+      border-radius: 12px !important;
+      padding: 13px 16px !important;
+      font-size: .93rem;
+      font-family: 'DM Sans', sans-serif;
+      transition: border-color .25s, box-shadow .25s, background .25s;
+    }
+
+    .form-control::placeholder {
+      color: rgba(255, 255, 255, .3) !important;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: var(--ocean-light) !important;
+      box-shadow: 0 0 0 4px rgba(18, 163, 196, .15) !important;
+      background: rgba(255, 255, 255, .09) !important;
+      outline: none;
+    }
+
+    .form-select option {
+      background: #0d1b2a;
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    /* Divider labels */
+    .form-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 30px 0;
+    }
+
+    .divider-label {
+      text-align: center;
+      font-size: .75rem;
+      color: rgba(255, 255, 255, .35);
+      letter-spacing: 1px;
+      margin: -10px 0 20px;
+      position: relative;
+    }
+
+    .divider-label::before,
+    .divider-label::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: calc(50% - 70px);
+      height: 1px;
+      background: var(--border);
+    }
+
+    .divider-label::before {
+      left: 0;
+    }
+
+    .divider-label::after {
+      right: 0;
+    }
+
+    /* Places grid */
+    .places-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .place-btn {
+      padding: 10px 6px;
+      border-radius: 10px;
+      text-align: center;
+      border: 1.5px solid var(--border);
+      background: rgba(255, 255, 255, .04);
+      cursor: pointer;
+      transition: all .25s cubic-bezier(.34, 1.56, .64, 1);
+      color: rgba(255, 255, 255, .7);
+    }
+
+    .place-btn .num {
+      font-size: 1.2rem;
+      font-weight: 700;
+      display: block;
+      color: white;
+    }
+
+    .place-btn .price {
+      font-size: .62rem;
+      color: rgba(255, 255, 255, .45);
+      display: block;
+      margin-top: 2px;
+    }
+
+    .place-btn:hover {
+      border-color: var(--ocean-light);
+      background: var(--ocean-glow);
+      transform: translateY(-3px);
+    }
+
+    .place-btn.selected {
+      border-color: var(--ocean-light);
+      background: linear-gradient(135deg, rgba(10, 116, 144, .35), rgba(18, 163, 196, .2));
+      box-shadow: 0 0 0 3px rgba(18, 163, 196, .15);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .place-btn.selected .price {
+      color: var(--sand);
+    }
+
+    /* Payment grid */
+    .payment-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .payment-card {
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      background: rgba(255, 255, 255, .04);
+      transition: all .25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .payment-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, transparent, rgba(255, 255, 255, .04), transparent);
+      transform: translateX(-100%);
+      transition: transform .5s ease;
+    }
+
+    .payment-card:hover::after {
+      transform: translateX(100%);
+    }
+
+    .payment-card:hover {
+      border-color: rgba(255, 255, 255, .28);
+      background: rgba(255, 255, 255, .07);
+    }
+
+    .payment-card.selected {
+      border-color: var(--ocean-light);
+      background: linear-gradient(135deg, rgba(10, 116, 144, .28), rgba(18, 163, 196, .12));
+      box-shadow: 0 0 0 3px rgba(18, 163, 196, .15);
+    }
+
+    .payment-card input[type="radio"] {
+      display: none;
+    }
+
+    .payment-logo {
+      width: 52px;
+      height: 36px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .payment-logo svg {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .payment-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .payment-name {
+      font-weight: 600;
+      font-size: .9rem;
+      white-space: nowrap;
+    }
+
+    .payment-desc {
+      font-size: .72rem;
+      color: rgba(255, 255, 255, .45);
+      margin-top: 1px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .payment-check {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .7rem;
+      color: transparent;
+      transition: all .2s;
+    }
+
+    .payment-card.selected .payment-check {
+      background: var(--ocean-light);
+      border-color: var(--ocean-light);
+      color: white;
+    }
+
+    /* Summary pill */
+    .summary-pill {
+      background: rgba(18, 163, 196, .10);
+      border: 1px solid rgba(18, 163, 196, .25);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .summary-pill .lbl {
+      font-size: .8rem;
+      color: rgba(255, 255, 255, .5);
+    }
+
+    .summary-pill .val {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--sand);
+    }
+
+    /* Submit button */
+    .btn-submit {
+      background: linear-gradient(135deg, #0a7490, #12a3c4);
+      border: none;
+      color: white;
+      padding: 17px;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      width: 100%;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s, opacity .2s;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(10, 116, 144, .4);
+    }
+
+    .btn-submit::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, .10), transparent);
+    }
+
+    .btn-submit::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .18), transparent);
+      transform: translateX(-110%);
+      transition: transform .6s ease;
+    }
+
+    .btn-submit:hover::after {
+      transform: translateX(110%);
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(10, 116, 144, .55);
+    }
+
+    .btn-submit:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Shake anim */
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(0)
+      }
+
+      20% {
+        transform: translateX(-6px)
+      }
+
+      40% {
+        transform: translateX(6px)
+      }
+
+      60% {
+        transform: translateX(-4px)
+      }
+
+      80% {
+        transform: translateX(4px)
+      }
+    }
+
+    .field-error {
+      animation: shake .4s ease;
+    }
+
+    /* ══ SUCCESS OVERLAY ══ */
+    #success-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(6, 15, 24, .93);
+      backdrop-filter: blur(14px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    #success-overlay.show {
+      display: flex;
+      animation: fadeInOv .4s ease both;
+    }
+
+    @keyframes fadeInOv {
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      pointer-events: none;
+      display: none;
+    }
+
+    .ticket-wrap {
+      animation: ticketPop .55s cubic-bezier(.34, 1.56, .64, 1) .15s both;
+      max-width: 530px;
+      width: 100%;
+    }
+
+    @keyframes ticketPop {
+      from {
+        opacity: 0;
+        transform: scale(.8) translateY(30px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    .ticket {
+      background: linear-gradient(145deg, #0d2236, #0a1a2e);
+      border: 1px solid rgba(18, 163, 196, .4);
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, .7);
+    }
+
+    .ticket-header {
+      background: linear-gradient(135deg, #064e3b, #065f46, #047857);
+      padding: 34px 38px 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ticket-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(52, 211, 153, .2), transparent);
+    }
+
+    .tick-icon {
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      background: rgba(34, 197, 94, .2);
+      border: 3px solid var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      animation: tickBounce .6s cubic-bezier(.34, 1.56, .64, 1) .4s both;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes tickBounce {
+      from {
+        transform: scale(0) rotate(-90deg);
+        opacity: 0
+      }
+
+      to {
+        transform: scale(1) rotate(0);
+        opacity: 1
+      }
+    }
+
+    .tick-icon i {
+      font-size: 2rem;
+      color: var(--green);
+    }
+
+    .ticket-header h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: white;
+      margin: 0 0 6px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ticket-header p {
+      color: rgba(255, 255, 255, .7);
+      font-size: .9rem;
+      margin: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ticket-perf {
+      display: flex;
+      align-items: center;
+      background: #081422;
+    }
+
+    .perf-circle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--dark2);
+      flex-shrink: 0;
+    }
+
+    .perf-circle.left {
+      margin-left: -14px;
+    }
+
+    .perf-circle.right {
+      margin-right: -14px;
+    }
+
+    .perf-line {
+      flex: 1;
+      border-top: 2px dashed rgba(255, 255, 255, .12);
+      margin: 0 8px;
+    }
+
+    .ticket-body {
+      padding: 28px 38px;
+    }
+
+    .ticket-ref {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .ticket-ref .ref-label {
+      font-size: .72rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .4);
+      margin-bottom: 4px;
+    }
+
+    .ticket-ref .ref-code {
+      font-family: 'Courier New', monospace;
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--ocean-light);
+      letter-spacing: 4px;
+      background: rgba(18, 163, 196, .08);
+      padding: 8px 20px;
+      border-radius: 10px;
+      border: 1px solid rgba(18, 163, 196, .2);
+      display: inline-block;
+    }
+
+    .ticket-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .td-label {
+      font-size: .72rem;
+      color: rgba(255, 255, 255, .4);
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .td-value {
+      font-size: .95rem;
+      font-weight: 600;
+      color: white;
+    }
+
+    .ticket-amount {
+      background: linear-gradient(135deg, rgba(10, 116, 144, .2), rgba(18, 163, 196, .10));
+      border: 1px solid rgba(18, 163, 196, .25);
+      border-radius: 14px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+    }
+
+    .ta-label {
+      font-size: .8rem;
+      color: rgba(255, 255, 255, .5);
+    }
+
+    .ta-value {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--sand);
+      font-family: 'Playfair Display', serif;
+    }
+
+    .ticket-note {
+      background: rgba(255, 193, 7, .08);
+      border: 1px solid rgba(255, 193, 7, .2);
+      border-radius: 10px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 22px;
+      font-size: .82rem;
+      color: rgba(255, 255, 255, .65);
+    }
+
+    .ticket-note i {
+      color: #fbbf24;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .ticket-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-ticket-close {
+      flex: 1;
+      background: var(--ocean);
+      border: none;
+      color: white;
+      padding: 13px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: .92rem;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+    }
+
+    .btn-ticket-close:hover {
+      background: var(--ocean-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-ticket-share {
+      background: rgba(37, 211, 102, .12);
+      border: 1px solid rgba(37, 211, 102, .3);
+      color: white;
+      padding: 13px 18px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: .92rem;
+      cursor: pointer;
+      transition: background .2s, border-color .2s;
+      white-space: nowrap;
+    }
+
+    .btn-ticket-share:hover {
+      background: rgba(37, 211, 102, .22);
+      border-color: var(--green-wa);
+    }
+
+    /* ══ FOOTER ══ */
+    footer {
+      background: #030b12;
+      padding: 38px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: rgba(255, 255, 255, .38);
+      font-size: .84rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer a {
+      color: var(--ocean-light);
+      text-decoration: none;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .footer-social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, .45);
+      transition: all .25s;
+      text-decoration: none;
+      font-size: .9rem;
+    }
+
+    .footer-social-link:hover {
+      background: var(--ocean-light);
+      border-color: var(--ocean-light);
+      color: white;
+      transform: translateY(-4px) scale(1.1);
+      box-shadow: 0 8px 20px var(--ocean-glow);
+    }
+
+    /* ══ RESPONSIVE ══ */
+    @media(max-width:768px) {
+      .price-card {
+        padding: 32px 22px;
+      }
+
+      .includes-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .payment-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .places-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .step-line {
+        width: 40px;
+      }
+
+      .form-card {
+        padding: 28px 18px;
+      }
+
+      .ticket-body {
+        padding: 22px 24px;
+      }
+
+      .ticket-header {
+        padding: 26px 24px 22px;
+      }
+
+      .ticket-details {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+    }
+
+    @media(max-width:480px) {
+      .trust-row {
+        gap: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="sprogress"></div>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar navbar-expand-lg" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="Accueil.html"><span class="wave-icon">🌊</span> <span>Sortie</span> Plage</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon" style="filter:invert(1)"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav align-items-center gap-1">
+          <li class="nav-item"><a class="nav-link" href="Accueil.html">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="A propos.html">À propos</a></li>
+          <li class="nav-item"><a class="nav-link" href="Programme.html">Programme</a></li>
+          <li class="nav-item"><a class="nav-link" href="Gallery.html">Galerie</a></li>
+          <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+          <li class="nav-item ms-2"><a class="btn-hero-nav" href="Inscription.html">S'inscrire</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <div class="page-hero">
+    <div class="deco-ring r1"></div>
+    <div class="deco-ring r2"></div>
+    <div class="deco-ring r3"></div>
+    <div class="hero-orb orb-a"></div>
+    <div class="hero-orb orb-b"></div>
+    <div class="container page-hero-content">
+      <p class="hero-eyebrow">Tarif & Inscription</p>
+      <h1 class="hero-h1">Réservez votre <span class="shimmer">place</span><br>à Grand-Bassam 🏖️</h1>
+      <p class="hero-sub">Un prix imbattable pour une journée inoubliable — tout inclus. Places limitées à 50 personnes.
+        Inscrivez-vous maintenant avant qu'il ne soit trop tard !</p>
+      <div class="hero-pills">
+        <span class="hero-pill"><i class="fas fa-tag"></i> 5 000 FCFA / personne</span>
+        <span class="hero-pill"><i class="fas fa-calendar-alt"></i> Vendredi 1<sup>er</sup> Août 2026</span>
+        <span class="hero-pill"><i class="fas fa-shield-alt"></i> Paiement sécurisé</span>
+        <span class="hero-pill"><i class="fas fa-check-circle"></i> Tout inclus</span>
+      </div>
+    </div>
+    <div class="hero-waves">
+      <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,20 C480,60 960,0 1440,30 L1440,60 L0,60 Z" fill="#081422" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- ═══ TARIF ═══ -->
+  <section id="tarif">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <p class="section-label">Tarification transparente</p>
+        <h2 class="section-title">Un prix <span>imbattable</span> pour tous</h2>
+        <p style="color:rgba(255,255,255,.45);font-size:.95rem;max-width:480px;margin:0 auto;">5 000 FCFA seulement pour
+          une journée complète à la plage de Grand-Bassam — aucun frais caché.</p>
+      </div>
+
+      <div class="row g-4 align-items-start justify-content-center">
+
+        <!-- ── MAIN PRICE CARD ── -->
+        <div class="col-lg-6 reveal from-l">
+          <div class="price-card">
+            <div class="hot-badge">🔥 Meilleur tarif</div>
+            <p class="price-label">Prix par personne</p>
+            <div class="price-display">
+              <span class="price-currency">FCFA</span>
+              <span class="price-number">5 000</span>
+            </div>
+            <p class="price-note"><i class="fas fa-calendar-alt"></i> Vendredi 1<sup>er</sup> Août 2026 · Règlement à
+              l'inscription</p>
+            <hr class="price-divider" />
+            <p class="includes-title">✅ Ce qui est inclus</p>
+            <div class="includes-grid">
+              <div class="include-item">
+                <div class="include-icon"><i class="fas fa-bus"></i></div>
+                <div class="include-text">
+                  <div class="it">Transport A/R</div>
+                  <div class="is">Bus climatisé aller-retour</div>
+                </div>
+              </div>
+              <div class="include-item">
+                <div class="include-icon"><i class="fas fa-water"></i></div>
+                <div class="include-text">
+                  <div class="it">Activités nautiques</div>
+                  <div class="is">Jet-ski, volley, baignade…</div>
+                </div>
+              </div>
+              <div class="include-item">
+                <div class="include-icon"><i class="fas fa-utensils"></i></div>
+                <div class="include-text">
+                  <div class="it">Repas de midi</div>
+                  <div class="is">Grillades + accompagnement</div>
+                </div>
+              </div>
+              <div class="include-item">
+                <div class="include-icon"><i class="fas fa-glass-cheers"></i></div>
+                <div class="include-text">
+                  <div class="it">Boissons fraîches</div>
+                  <div class="is">Jus, eau, sodas inclus</div>
+                </div>
+              </div>
+              <div class="include-item">
+                <div class="include-icon"><i class="fas fa-music"></i></div>
+                <div class="include-text">
+                  <div class="it">Animation musicale</div>
+                  <div class="is">DJ set toute la journée</div>
+                </div>
+              </div>
+              <div class="include-item">
+                <div class="include-icon"><i class="fas fa-couch"></i></div>
+                <div class="include-text">
+                  <div class="it">Espace détente</div>
+                  <div class="is">Vue panoramique sur mer</div>
+                </div>
+              </div>
+            </div>
+            <a href="#inscription" class="btn-reserve-main"><i class="fas fa-ticket-alt me-2"></i>Réserver ma place
+              maintenant →</a>
+            <div class="trust-row">
+              <span class="trust-item"><i class="fas fa-lock"></i> Paiement sécurisé</span>
+              <span class="trust-item"><i class="fas fa-shield-alt"></i> Place garantie</span>
+              <span class="trust-item"><i class="fas fa-headset"></i> Réponse rapide</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── SIDEBAR ── -->
+        <div class="col-lg-4 reveal from-r">
+
+          <!-- Countdown -->
+          <div class="countdown-card">
+            <h6>⏳ Compte à rebours — 1<sup>er</sup> Août 2026</h6>
+            <div class="cd-grid">
+              <div class="cd-box">
+                <div class="cd-num" id="cd-j">--</div>
+                <div class="cd-lbl">JOURS</div>
+              </div>
+              <div class="cd-box">
+                <div class="cd-num" id="cd-h">--</div>
+                <div class="cd-lbl">HEURES</div>
+              </div>
+              <div class="cd-box">
+                <div class="cd-num" id="cd-m">--</div>
+                <div class="cd-lbl">MIN</div>
+              </div>
+              <div class="cd-box">
+                <div class="cd-num" id="cd-s">--</div>
+                <div class="cd-lbl">SEC</div>
+              </div>
+            </div>
+            <p style="font-size:.75rem;color:rgba(255,255,255,.35);margin:14px 0 0;">Ne manquez pas l'événement de l'été
+              !</p>
+          </div>
+
+          <!-- Group prices -->
+          <div class="sidebar-card">
+            <h5><i class="fas fa-users" style="color:var(--ocean-light)"></i> Tarifs de groupe</h5>
+            <div class="price-row"><span class="places">1 place</span><span class="total">5 000 FCFA</span></div>
+            <div class="price-row"><span class="places">2 places</span><span class="total">10 000 FCFA</span></div>
+            <div class="price-row"><span class="places">3 places</span><span class="total">15 000 FCFA</span></div>
+            <div class="price-row"><span class="places">4 places</span><span class="total">20 000 FCFA</span></div>
+            <div class="price-row"><span class="places">5 places et +</span><span class="special">Contactez-nous</span>
+            </div>
+          </div>
+
+          <!-- Payment -->
+          <div class="sidebar-card">
+            <h5><i class="fas fa-credit-card" style="color:var(--ocean-light)"></i> Modes de paiement</h5>
+            <div class="pay-methods">
+              <div class="pay-pill wave">
+                <div class="pay-dot" style="background:#1651F0;color:white;font-size:.55rem;">W</div>Wave
+              </div>
+              <div class="pay-pill orange">
+                <div class="pay-dot" style="background:#FF6600;color:white;font-size:.5rem;">OM</div>Orange Money
+              </div>
+              <div class="pay-pill mtn">
+                <div class="pay-dot" style="background:#FFCC00;color:#333;font-size:.5rem;">MTN</div>MoMo
+              </div>
+              <div class="pay-pill cash">
+                <div class="pay-dot" style="font-size:.85rem;">💵</div>Sur place
+              </div>
+            </div>
+          </div>
+
+          <!-- Spots -->
+          <div class="sidebar-card"
+            style="text-align:center;background:linear-gradient(135deg,rgba(232,131,74,.18),rgba(212,80,58,.08));border-color:rgba(232,131,74,.28);">
+            <h5 style="color:var(--sunset);justify-content:center;"><i class="fas fa-ticket-alt"></i> Places restantes
+            </h5>
+            <div class="live-badge">
+              <div class="live-dot"></div> En direct
+            </div>
+            <div class="spots-badge" id="spots-badge">
+              <div class="big" id="spots-left">—</div>
+              <div class="sm">places disponibles</div>
+            </div>
+            <p style="font-size:.78rem;color:rgba(255,255,255,.4);margin:12px 0 0;">Ne tardez pas, les places partent
+              vite !</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="row justify-content-center mt-5">
+        <div class="col-lg-8 reveal">
+          <p class="section-label text-center mb-2">FAQ</p>
+          <h3 class="section-title text-center mb-4" style="font-size:1.8rem;">Questions <span>fréquentes</span></h3>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">Le transport est-il vraiment inclus ?<i class="fas fa-plus"></i></div>
+            <div class="faq-a">Oui, le bus aller-retour est entièrement inclus dans les 5 000 FCFA. Aucun frais
+              supplémentaire.</div>
+          </div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">Quand dois-je payer mon inscription ?<i class="fas fa-plus"></i></div>
+            <div class="faq-a">Le règlement se fait à l'inscription via Wave, Orange Money, MTN MoMo ou en espèces. La
+              place est confirmée dès réception.</div>
+          </div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">Peut-on annuler ou se faire rembourser ?<i class="fas fa-plus"></i></div>
+            <div class="faq-a">Annulation avant le 25 juillet 2026 → remboursement complet. Passé cette date, la place
+              peut être transférée à un proche.</div>
+          </div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">Y a-t-il des activités supplémentaires payantes ?<i class="fas fa-plus"></i></div>
+            <div class="faq-a">Non, toutes les activités du programme (jet-ski, beach-volley, animation musicale) sont
+              incluses dans les 5 000 FCFA.</div>
+          </div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">Y a-t-il un tarif spécial pour les groupes ?<i class="fas fa-plus"></i></div>
+            <div class="faq-a">Pour 5 personnes et plus, contactez-nous sur WhatsApp au 01 73 71 89 28 pour une offre
+              adaptée à votre groupe.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SEPARATOR ═══ -->
+  <div class="section-separator">
+    <div class="separator-inner reveal">
+      <h4>Prêt ? Remplissez le <span>formulaire ci-dessous</span> 👇</h4>
+      <p>Inscrivez-vous en moins de 2 minutes · Confirmation immédiate</p>
+    </div>
+  </div>
+
+  <!-- ═══ INSCRIPTION ═══ -->
+  <section id="inscription">
+    <div class="container">
+
+      <!-- Steps bar -->
+      <div class="steps-bar reveal">
+        <div class="step-item">
+          <div class="step-circle done"><i class="fas fa-check"></i></div><span class="step-label">Tarif</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item">
+          <div class="step-circle active">2</div><span class="step-label">Infos</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item">
+          <div class="step-circle">3</div><span class="step-label">Paiement</span>
+        </div>
+      </div>
+
+      <div class="row justify-content-center g-4">
+
+        <!-- ── FORM ── -->
+        <div class="col-lg-7 reveal from-l">
+          <div class="form-card">
+
+            <p class="divider-label" style="margin-top:0;margin-bottom:22px;">👤 Identité</p>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-group-label"><i class="fas fa-user"></i> Nom <span class="req">*</span></label>
+                <input type="text" class="form-control" placeholder="Votre nom" id="f-nom" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-group-label"><i class="fas fa-user"></i> Prénom <span class="req">*</span></label>
+                <input type="text" class="form-control" placeholder="Votre prénom" id="f-prenom" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-group-label"><i class="fas fa-envelope"></i> Email <span class="req">*</span></label>
+                <input type="email" class="form-control" placeholder="votre@email.com" id="f-email" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-group-label"><i class="fas fa-phone"></i> Téléphone <span
+                    class="req">*</span></label>
+                <input type="tel" class="form-control" placeholder="+225 07 XX XX XX XX" id="f-tel" />
+              </div>
+            </div>
+
+            <hr class="form-divider" />
+            <p class="divider-label">🎟️ Nombre de places</p>
+            <div class="places-grid">
+              <div class="place-btn selected" data-places="1" onclick="selectPlaces(this)"><span
+                  class="num">1</span><span class="price">5 000 F</span></div>
+              <div class="place-btn" data-places="2" onclick="selectPlaces(this)"><span class="num">2</span><span
+                  class="price">10 000 F</span></div>
+              <div class="place-btn" data-places="3" onclick="selectPlaces(this)"><span class="num">3</span><span
+                  class="price">15 000 F</span></div>
+              <div class="place-btn" data-places="4" onclick="selectPlaces(this)"><span class="num">4</span><span
+                  class="price">20 000 F</span></div>
+              <div class="place-btn" data-places="5" onclick="selectPlaces(this)"><span class="num">5+</span><span
+                  class="price">Nous contacter</span></div>
+            </div>
+
+            <hr class="form-divider" />
+            <p class="divider-label">💳 Mode de paiement</p>
+            <div class="payment-grid">
+
+              <label class="payment-card selected" onclick="selectPayment(this,'Wave')">
+                <input type="radio" name="payment" value="Wave" checked />
+                <div class="payment-logo"><svg viewBox="0 0 80 50" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="80" height="50" rx="8" fill="#1651F0" /><text x="40" y="32" text-anchor="middle"
+                      fill="white" font-family="Arial Black,sans-serif" font-size="18" font-weight="900">wave</text>
+                  </svg></div>
+                <div class="payment-info">
+                  <div class="payment-name">Wave</div>
+                  <div class="payment-desc">Paiement mobile rapide</div>
+                </div>
+                <div class="payment-check"><i class="fas fa-check"></i></div>
+              </label>
+
+              <label class="payment-card" onclick="selectPayment(this,'Orange Money')">
+                <input type="radio" name="payment" value="Orange Money" />
+                <div class="payment-logo"><svg viewBox="0 0 80 50" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="80" height="50" rx="8" fill="#FF6600" /><text x="40" y="21" text-anchor="middle"
+                      fill="white" font-family="Arial,sans-serif" font-size="7.5" font-weight="700">ORANGE</text><text
+                      x="40" y="34" text-anchor="middle" fill="white" font-family="Arial,sans-serif" font-size="7.5"
+                      font-weight="700">MONEY</text>
+                  </svg></div>
+                <div class="payment-info">
+                  <div class="payment-name">Orange Money</div>
+                  <div class="payment-desc">Réseau Orange CI</div>
+                </div>
+                <div class="payment-check"><i class="fas fa-check"></i></div>
+              </label>
+
+              <label class="payment-card" onclick="selectPayment(this,'MTN MoMo')">
+                <input type="radio" name="payment" value="MTN MoMo" />
+                <div class="payment-logo"><svg viewBox="0 0 80 50" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="80" height="50" rx="8" fill="#FFCC00" /><text x="40" y="24" text-anchor="middle"
+                      fill="#1A1A1A" font-family="Arial Black,sans-serif" font-size="13"
+                      font-weight="900">MTN</text><text x="40" y="38" text-anchor="middle" fill="#1A1A1A"
+                      font-family="Arial,sans-serif" font-size="7.5" font-weight="700">MoMo</text>
+                  </svg></div>
+                <div class="payment-info">
+                  <div class="payment-name">MTN MoMo</div>
+                  <div class="payment-desc">Réseau MTN CI</div>
+                </div>
+                <div class="payment-check"><i class="fas fa-check"></i></div>
+              </label>
+
+              <label class="payment-card" onclick="selectPayment(this,'Sur place')">
+                <input type="radio" name="payment" value="Sur place" />
+                <div class="payment-logo"><svg viewBox="0 0 80 50" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="80" height="50" rx="8" fill="#1e3a2f" /><text x="40" y="22" text-anchor="middle"
+                      fill="#4ade80" font-family="Arial,sans-serif" font-size="22">💵</text><text x="40" y="40"
+                      text-anchor="middle" fill="#4ade80" font-family="Arial,sans-serif" font-size="7"
+                      font-weight="600">CASH</text>
+                  </svg></div>
+                <div class="payment-info">
+                  <div class="payment-name">Sur place</div>
+                  <div class="payment-desc">Paiement le jour J</div>
+                </div>
+                <div class="payment-check"><i class="fas fa-check"></i></div>
+              </label>
+
+            </div>
+
+            <hr class="form-divider" />
+            <label class="form-group-label"><i class="fas fa-comment-dots"></i> Message (optionnel)</label>
+            <textarea class="form-control" id="f-msg" rows="3"
+              placeholder="Une question ou remarque particulière ?"></textarea>
+
+            <hr class="form-divider" />
+
+            <div class="summary-pill">
+              <div>
+                <div class="lbl">Total à payer</div>
+                <div class="val" id="summary-total">5 000 FCFA</div>
+              </div>
+              <div style="text-align:right">
+                <div class="lbl">Via</div>
+                <div class="val" id="summary-mode" style="font-size:.95rem">Wave</div>
+              </div>
+            </div>
+
+            <button class="btn-submit" id="btn-confirm" onclick="inscrire()">
+              <i class="fas fa-paper-plane me-2"></i>Confirmer mon inscription
+            </button>
+
+          </div>
+        </div>
+
+        <!-- ── SIDEBAR FORM ── -->
+        <div class="col-lg-4 col-xl-3 reveal from-r">
+          <div class="sidebar-card">
+            <h5><i class="fas fa-info-circle" style="color:var(--ocean-light)"></i> Infos pratiques</h5>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <div style="display:flex;gap:12px;align-items:flex-start;">
+                <div
+                  style="width:36px;height:36px;border-radius:10px;background:var(--ocean-glow);display:flex;align-items:center;justify-content:center;color:var(--ocean-light);font-size:.85rem;flex-shrink:0;">
+                  <i class="fas fa-calendar-alt"></i></div>
+                <div>
+                  <div style="font-weight:600;font-size:.88rem;">Date</div>
+                  <div style="font-size:.78rem;color:rgba(255,255,255,.45);">Vendredi 1<sup>er</sup> Août 2026</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:12px;align-items:flex-start;">
+                <div
+                  style="width:36px;height:36px;border-radius:10px;background:var(--ocean-glow);display:flex;align-items:center;justify-content:center;color:var(--ocean-light);font-size:.85rem;flex-shrink:0;">
+                  <i class="fas fa-clock"></i></div>
+                <div>
+                  <div style="font-weight:600;font-size:.88rem;">Horaire</div>
+                  <div style="font-size:.78rem;color:rgba(255,255,255,.45);">Départ 7h00 · Retour ~18h30</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:12px;align-items:flex-start;">
+                <div
+                  style="width:36px;height:36px;border-radius:10px;background:var(--ocean-glow);display:flex;align-items:center;justify-content:center;color:var(--ocean-light);font-size:.85rem;flex-shrink:0;">
+                  <i class="fas fa-map-marker-alt"></i></div>
+                <div>
+                  <div style="font-weight:600;font-size:.88rem;">Destination</div>
+                  <div style="font-size:.78rem;color:rgba(255,255,255,.45);">Plage de Grand-Bassam, CI</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:12px;align-items:flex-start;">
+                <div
+                  style="width:36px;height:36px;border-radius:10px;background:var(--ocean-glow);display:flex;align-items:center;justify-content:center;color:var(--ocean-light);font-size:.85rem;flex-shrink:0;">
+                  <i class="fas fa-ticket-alt"></i></div>
+                <div>
+                  <div style="font-weight:600;font-size:.88rem;">Tarif</div>
+                  <div style="font-size:.78rem;color:rgba(255,255,255,.45);">5 000 FCFA / personne · Tout inclus</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-card" style="text-align:center;padding:20px 18px;">
+            <div class="live-badge">
+              <div class="live-dot"></div> En direct
+            </div>
+            <div class="spots-badge" id="spots-badge2">
+              <div class="big" id="spots-left2">—</div>
+              <div class="sm">places restantes</div>
+            </div>
+            <p style="font-size:.78rem;color:rgba(255,255,255,.4);margin:12px 0 0;">Ne tardez pas — les places partent
+              vite !</p>
+          </div>
+
+          <div class="sidebar-card">
+            <h5><i class="fab fa-whatsapp" style="color:#25D366"></i> Contact rapide</h5>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <a href="https://wa.me/2250173718928" target="_blank"
+                style="display:flex;align-items:center;gap:8px;background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.25);border-radius:10px;padding:10px 14px;text-decoration:none;color:white;font-size:.84rem;font-weight:600;font-family:'Courier New',monospace;transition:background .2s,transform .2s;"><i
+                  class="fab fa-whatsapp" style="color:#25D366"></i>01 73 71 89 28</a>
+              <a href="https://wa.me/2250504651295" target="_blank"
+                style="display:flex;align-items:center;gap:8px;background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.25);border-radius:10px;padding:10px 14px;text-decoration:none;color:white;font-size:.84rem;font-weight:600;font-family:'Courier New',monospace;transition:background .2s,transform .2s;"><i
+                  class="fab fa-whatsapp" style="color:#25D366"></i>05 04 65 12 95</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SUCCESS OVERLAY ═══ -->
+  <canvas id="confetti-canvas"></canvas>
+  <div id="success-overlay">
+    <div class="ticket-wrap">
+      <div class="ticket">
+        <div class="ticket-header">
+          <div class="tick-icon"><i class="fas fa-check"></i></div>
+          <h3>Inscription confirmée ! 🎉</h3>
+          <p>Vous êtes officiellement inscrit(e) à la sortie</p>
+        </div>
+        <div class="ticket-perf">
+          <div class="perf-circle left"></div>
+          <div class="perf-line"></div>
+          <div class="perf-circle right"></div>
+        </div>
+        <div class="ticket-body">
+          <div class="ticket-ref">
+            <div class="ref-label">Numéro de référence</div>
+            <div class="ref-code" id="ref-code">—</div>
+          </div>
+          <div class="ticket-details">
+            <div>
+              <div class="td-label">Participant(e)</div>
+              <div class="td-value" id="td-nom">—</div>
+            </div>
+            <div>
+              <div class="td-label">Places réservées</div>
+              <div class="td-value" id="td-places">—</div>
+            </div>
+            <div>
+              <div class="td-label">Date</div>
+              <div class="td-value">Vend. 1<sup>er</sup> Août 2026</div>
+            </div>
+            <div>
+              <div class="td-label">Paiement</div>
+              <div class="td-value" id="td-mode">—</div>
+            </div>
+          </div>
+          <div class="ticket-amount">
+            <div>
+              <div class="ta-label">Montant à régler</div>
+              <div class="ta-value" id="td-total">—</div>
+            </div>
+            <i class="fas fa-receipt" style="color:var(--ocean-light);font-size:1.6rem;opacity:.5"></i>
+          </div>
+          <div class="ticket-note"><i class="fas fa-info-circle"></i><span>Vous recevrez une confirmation par WhatsApp
+              ou email. Conservez précieusement ce numéro de référence.</span></div>
+          <div class="ticket-actions">
+            <button class="btn-ticket-close" onclick="closeSuccess()"><i class="fas fa-home me-1"></i> Retour</button>
+            <button class="btn-ticket-share" onclick="partagerWA()"><i class="fab fa-whatsapp me-1"></i>
+              Partager</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-socials">
+        <a href="#" class="footer-social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="footer-social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/2250173718928" target="_blank" class="footer-social-link" title="WhatsApp"><i
+            class="fab fa-whatsapp"></i></a>
+        <a href="#" class="footer-social-link" title="TikTok"><i class="fab fa-tiktok"></i></a>
+      </div>
+      <p style="margin-bottom:6px;">&copy; 2026 <a href="Accueil.html">Sortie Plage Grand-Bassam</a> — Tous droits
+        réservés</p>
+      <p style="font-size:.78rem;color:rgba(255,255,255,.25);">Vendredi 1<sup>er</sup> Août 2026 · Grand-Bassam, Côte
+        d'Ivoire</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+  <script>
+    /* ══ Scroll progress + navbar ══ */
+    window.addEventListener('scroll', () => {
+      const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+      document.getElementById('sprogress').style.width = pct + '%';
+      document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    /* ══ Scroll Reveal ══ */
+    const revObs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } }); }, { threshold: .10 });
+    document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+    /* ══ Countdown ══ */
+    function updateCountdown() {
+      const diff = new Date('2026-08-01T07:00:00') - new Date();
+      if (diff <= 0) return;
+      document.getElementById('cd-j').textContent = String(Math.floor(diff / 86400000)).padStart(2, '0');
+      document.getElementById('cd-h').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+      document.getElementById('cd-m').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+      document.getElementById('cd-s').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+    }
+    updateCountdown(); setInterval(updateCountdown, 1000);
+
+    /* ══ FAQ ══ */
+    function toggleFaq(el) { el.classList.toggle('open'); }
+
+    /* ══ Spots localStorage ══ */
+    const STORAGE_KEY = 'sortie_plage_spots_2026';
+    const TOTAL_SPOTS = 50;
+    function getSpotsLeft() { const s = localStorage.getItem(STORAGE_KEY); if (s !== null) return parseInt(s); localStorage.setItem(STORAGE_KEY, TOTAL_SPOTS); return TOTAL_SPOTS; }
+    function setSpotsLeft(n) { const v = Math.max(0, n); localStorage.setItem(STORAGE_KEY, v); return v; }
+    function renderSpots() {
+      const n = getSpotsLeft();
+      ['spots-left', 'spots-left2'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = n; });
+      ['spots-badge', 'spots-badge2'].forEach(id => { const el = document.getElementById(id); if (el) { el.classList.toggle('few', n <= 5); } });
+    }
+    renderSpots();
+
+    /* ══ Form interactions ══ */
+    const PRICE = 5000;
+    let selPlaces = 1, selMode = 'Wave';
+    function selectPlaces(el) { document.querySelectorAll('.place-btn').forEach(b => b.classList.remove('selected')); el.classList.add('selected'); selPlaces = parseInt(el.dataset.places) || 5; updateSummary(); }
+    function selectPayment(el, mode) { document.querySelectorAll('.payment-card').forEach(c => c.classList.remove('selected')); el.classList.add('selected'); selMode = mode; updateSummary(); }
+    function updateSummary() {
+      const total = selPlaces >= 5 ? '— Nous contacter' : (selPlaces * PRICE).toLocaleString('fr-FR') + ' FCFA';
+      document.getElementById('summary-total').textContent = total;
+      document.getElementById('summary-mode').textContent = selMode;
+    }
+
+    /* ══ Ref code generator ══ */
+    function genRef() { const c = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; let r = 'SPB-'; for (let i = 0; i < 6; i++)r += c[Math.floor(Math.random() * c.length)]; return r; }
+
+    /* ══ Submit ══ */
+    function inscrire() {
+      const nom = document.getElementById('f-nom').value.trim();
+      const prenom = document.getElementById('f-prenom').value.trim();
+      const email = document.getElementById('f-email').value.trim();
+      const tel = document.getElementById('f-tel').value.trim();
+      let valid = true;
+      ['f-nom', 'f-prenom', 'f-email', 'f-tel'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el.value.trim()) { valid = false; el.classList.add('field-error'); el.style.borderColor = '#e8834a'; el.style.boxShadow = '0 0 0 3px rgba(232,131,74,.2)'; setTimeout(() => { el.classList.remove('field-error'); el.style.borderColor = ''; el.style.boxShadow = ''; }, 2500); }
+      });
+      if (!valid) return;
+      const spots = getSpotsLeft();
+      if (spots < selPlaces && selPlaces < 5) { alert(`Il ne reste que ${spots} place(s) disponible(s).`); return; }
+      const btn = document.getElementById('btn-confirm');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Traitement en cours…';
+      setTimeout(() => {
+        setSpotsLeft(spots - (selPlaces < 5 ? selPlaces : 1));
+        const ref = genRef();
+        const total = selPlaces >= 5 ? 'À confirmer' : (selPlaces * PRICE).toLocaleString('fr-FR') + ' FCFA';
+        document.getElementById('ref-code').textContent = ref;
+        document.getElementById('td-nom').textContent = prenom + ' ' + nom.toUpperCase();
+        document.getElementById('td-places').textContent = selPlaces >= 5 ? '5+' : selPlaces + ' place(s)';
+        document.getElementById('td-mode').textContent = selMode;
+        document.getElementById('td-total').textContent = total;
+        window._ticketData = { nom, prenom, tel, email, ref, selPlaces, total, selMode };
+        renderSpots();
+        showSuccess();
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Confirmer mon inscription';
+      }, 900);
+    }
+
+    /* ══ Success overlay ══ */
+    function showSuccess() {
+      document.getElementById('success-overlay').classList.add('show');
+      document.body.style.overflow = 'hidden';
+      launchConfetti();
+    }
+    function closeSuccess() {
+      document.getElementById('success-overlay').classList.remove('show');
+      document.body.style.overflow = '';
+      stopConfetti();
+      ['f-nom', 'f-prenom', 'f-email', 'f-tel', 'f-msg'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+    }
+    function partagerWA() {
+      const d = window._ticketData; if (!d) return;
+      const msg = encodeURIComponent(`🌊 *Sortie Plage Grand-Bassam 2026 — Inscrit(e) !*\n\n👤 *Participant :* ${d.prenom} ${d.nom}\n🎟️ *Places :* ${d.selPlaces >= 5 ? '5+' : d.selPlaces}\n💳 *Paiement :* ${d.selMode}\n💰 *Total :* ${d.total}\n📅 *Date :* Vendredi 1er Août 2026\n📍 *Lieu :* Plage de Grand-Bassam, CI\n🔑 *Réf :* ${document.getElementById('ref-code').textContent}\n\nÀ la plage ! 🏖️🎉`);
+      window.open('https://wa.me/?text=' + msg, '_blank');
+    }
+
+    /* ══ Confetti ══ */
+    const cvs = document.getElementById('confetti-canvas'), ctx = cvs.getContext('2d');
+    let pts = [], afr = null, running = false;
+    const COLS = ['#12a3c4', '#f5deb3', '#e8834a', '#22c55e', '#ffffff', '#fbbf24', '#a78bfa'];
+    function resizeCvs() { cvs.width = window.innerWidth; cvs.height = window.innerHeight; }
+    window.addEventListener('resize', resizeCvs); resizeCvs();
+    function rnd(a, b) { return a + Math.random() * (b - a); }
+    function mkPt(x, y) { return { x, y, vx: rnd(-6, 6), vy: rnd(-14, -6), size: rnd(6, 12), col: COLS[Math.floor(Math.random() * COLS.length)], rot: rnd(0, Math.PI * 2), rs: rnd(-.2, .2), shape: Math.random() > .5 ? 'rect' : 'circle', g: .4, life: 1, decay: rnd(.01, .025) }; }
+    function burst() { if (!running) return; for (let i = 0; i < 8; i++)pts.push(mkPt(cvs.width / 2 + rnd(-120, 120), cvs.height * .3 + rnd(-50, 50))); }
+    function drawPt(p) { ctx.save(); ctx.globalAlpha = p.life; ctx.fillStyle = p.col; ctx.translate(p.x, p.y); ctx.rotate(p.rot); if (p.shape === 'rect') ctx.fillRect(-p.size / 2, -p.size / 4, p.size, p.size / 2); else { ctx.beginPath(); ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2); ctx.fill(); } ctx.restore(); }
+    function animateC() { ctx.clearRect(0, 0, cvs.width, cvs.height); pts = pts.filter(p => p.life > 0); pts.forEach(p => { p.x += p.vx; p.vy += p.g; p.y += p.vy; p.rot += p.rs; p.life -= p.decay; drawPt(p); }); if (running) afr = requestAnimationFrame(animateC); }
+    let burstInt;
+    function launchConfetti() {
+      running = true; cvs.style.display = 'block';
+      for (let i = 0; i < 120; i++)pts.push(mkPt(cvs.width * rnd(.1, .9), cvs.height * rnd(-.1, .5)));
+      animateC();
+      burstInt = setInterval(burst, 300);
+      setTimeout(() => clearInterval(burstInt), 4000);
+    }
+    function stopConfetti() { running = false; clearInterval(burstInt); cancelAnimationFrame(afr); ctx.clearRect(0, 0, cvs.width, cvs.height); pts = []; cvs.style.display = 'none'; }
+    cvs.style.display = 'none';
+  </script>
+</body>
+
+</html>

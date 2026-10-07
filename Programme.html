@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programme – Sortie Plage Grand-Bassam 2026</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --ocean: #0a7490;
+      --ocean-light: #12a3c4;
+      --ocean-glow: rgba(18, 163, 196, 0.20);
+      --sand: #f5deb3;
+      --sand-dark: #d4a96a;
+      --sunset: #e8834a;
+      --sunset-glow: rgba(232, 131, 74, 0.40);
+      --green-wa: #25D366;
+      --white: #ffffff;
+      --dark: #060f18;
+      --dark2: #081422;
+      --border: rgba(255, 255, 255, 0.09);
+      --card-bg: rgba(255, 255, 255, 0.04);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--dark);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    }
+
+    #sprogress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      z-index: 2001;
+      background: linear-gradient(90deg, var(--ocean-light), var(--sunset), var(--sand));
+      width: 0%;
+      border-radius: 0 2px 2px 0;
+      transition: width .1s;
+    }
+
+    .navbar {
+      background: rgba(6, 15, 24, .88) !important;
+      backdrop-filter: blur(22px);
+      padding: 14px 0;
+      position: fixed;
+      width: 100%;
+      top: 3px;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, .07);
+      transition: background .4s, padding .3s, box-shadow .3s;
+    }
+
+    .navbar.scrolled {
+      background: rgba(6, 15, 24, .98) !important;
+      padding: 10px 0;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, .4);
+    }
+
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--sand) !important;
+      letter-spacing: 1px;
+    }
+
+    .navbar-brand span {
+      color: var(--white);
+    }
+
+    .wave-icon {
+      display: inline-block;
+      animation: waveA 2.5s ease-in-out infinite;
+    }
+
+    @keyframes waveA {
+
+      0%,
+      100% {
+        transform: rotate(0)
+      }
+
+      25% {
+        transform: rotate(-15deg)
+      }
+
+      75% {
+        transform: rotate(15deg)
+      }
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, .82) !important;
+      font-weight: 500;
+      font-size: .9rem;
+      margin: 0 4px;
+      transition: color .2s;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: var(--sand);
+      transition: width .3s;
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+    }
+
+    .nav-link:hover {
+      color: var(--sand) !important;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .btn-hero-nav {
+      background: var(--sunset);
+      color: white;
+      border: none;
+      padding: 9px 22px;
+      border-radius: 50px;
+      font-size: .88rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 4px 18px var(--sunset-glow);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .btn-hero-nav:hover {
+      transform: translateY(-2px);
+      color: white;
+      box-shadow: 0 8px 28px var(--sunset-glow);
+    }
+
+    .page-hero {
+      min-height: 50vh;
+      background: linear-gradient(155deg, #050e18 0%, #083048 55%, #0b5570 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 120px 0 68px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 85% 40%, rgba(18, 163, 196, .14), transparent);
+    }
+
+    .deco-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(18, 163, 196, .10);
+      pointer-events: none;
+    }
+
+    .r1 {
+      width: 420px;
+      height: 420px;
+      top: -130px;
+      right: -100px;
+      animation: spin 30s linear infinite;
+    }
+
+    .r2 {
+      width: 240px;
+      height: 240px;
+      top: 0;
+      right: 80px;
+      border-color: rgba(232, 131, 74, .12);
+      animation: spin 20s linear infinite reverse;
+    }
+
+    .r3 {
+      width: 140px;
+      height: 140px;
+      bottom: 16px;
+      left: 8%;
+      animation: spin 15s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(60px);
+    }
+
+    .orb-a {
+      width: 320px;
+      height: 320px;
+      background: rgba(18, 163, 196, .11);
+      top: 6%;
+      right: 3%;
+      animation: orbF 9s ease-in-out infinite;
+    }
+
+    .orb-b {
+      width: 200px;
+      height: 200px;
+      background: rgba(232, 131, 74, .09);
+      bottom: 14%;
+      left: 5%;
+      animation: orbF 7s ease-in-out infinite 3.5s;
+    }
+
+    @keyframes orbF {
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1)
+      }
+
+      50% {
+        transform: translateY(-30px) scale(1.05)
+      }
+    }
+
+    .page-hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      font-size: .76rem;
+      font-weight: 600;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--ocean-light);
+      margin-bottom: 12px;
+      opacity: 0;
+      transform: translateX(-28px);
+      animation: slideRight .8s .2s ease both;
+    }
+
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.08;
+      opacity: 0;
+      transform: translateY(26px);
+      animation: slideUp .9s .4s ease both;
+    }
+
+    .hero-h1 .shimmer {
+      background: linear-gradient(90deg, var(--ocean-light), #7be8ff, var(--ocean-light));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-style: italic;
+      animation: shimmer 3s linear infinite;
+    }
+
+    @keyframes shimmer {
+      to {
+        background-position: 200% center
+      }
+    }
+
+    .hero-sub {
+      color: rgba(255, 255, 255, .55);
+      font-size: 1rem;
+      margin-top: 14px;
+      font-weight: 300;
+      max-width: 560px;
+      line-height: 1.8;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp .8s .6s ease both;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp .8s .8s ease both;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, .10);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 50px;
+      padding: 8px 18px;
+      font-size: .84rem;
+      font-weight: 500;
+      transition: background .25s, transform .2s;
+    }
+
+    .hero-pill:hover {
+      background: rgba(255, 255, 255, .20);
+      transform: translateY(-2px);
+    }
+
+    .hero-pill i {
+      color: var(--ocean-light);
+      font-size: .8rem;
+    }
+
+    .hero-waves {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    @keyframes slideRight {
+      from {
+        opacity: 0;
+        transform: translateX(-28px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .reveal.from-l {
+      transform: translateX(-36px);
+    }
+
+    .reveal.from-l.visible {
+      transform: none;
+    }
+
+    .reveal.from-r {
+      transform: translateX(36px);
+    }
+
+    .reveal.from-r.visible {
+      transform: none;
+    }
+
+    .reveal.d1 {
+      transition-delay: .08s
+    }
+
+    .reveal.d2 {
+      transition-delay: .16s
+    }
+
+    .reveal.d3 {
+      transition-delay: .24s
+    }
+
+    .reveal.d4 {
+      transition-delay: .32s
+    }
+
+    .reveal.d5 {
+      transition-delay: .40s
+    }
+
+    #programme {
+      background: var(--dark2);
+      padding: 90px 0 110px;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    #programme::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 300px;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(10, 116, 144, .08), transparent);
+      pointer-events: none;
+    }
+
+    .section-label {
+      font-size: .74rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ocean-light);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .section-title span {
+      color: var(--ocean-light);
+      font-style: italic;
+    }
+
+    /* Timeline */
+    .timeline-wrap {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .timeline-wrap::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--ocean-light), #a78bfa, var(--sunset), var(--ocean-light));
+      transform: translateX(-50%);
+      border-radius: 2px;
+      animation: lineGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes lineGlow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 8px var(--ocean-glow)
+      }
+
+      50% {
+        box-shadow: 0 0 22px rgba(18, 163, 196, .5)
+      }
+    }
+
+    .tl-row {
+      display: grid;
+      grid-template-columns: 1fr 70px 1fr;
+      margin-bottom: 36px;
+      align-items: start;
+    }
+
+    .tl-left {
+      padding-right: 32px;
+      text-align: right;
+    }
+
+    .tl-right {
+      padding-left: 32px;
+      text-align: left;
+    }
+
+    .tl-left.empty,
+    .tl-right.empty {
+      pointer-events: none;
+    }
+
+    .tl-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 8px;
+    }
+
+    .tl-dot {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      background: var(--dark2);
+      border: 2px solid var(--border);
+      position: relative;
+      z-index: 2;
+      transition: transform .35s cubic-bezier(.34, 1.56, .64, 1), box-shadow .3s;
+    }
+
+    .tl-row:hover .tl-dot {
+      transform: scale(1.22);
+    }
+
+    .step-1 .tl-dot {
+      border-color: var(--ocean-light);
+      background: rgba(18, 163, 196, .15);
+      box-shadow: 0 0 18px rgba(18, 163, 196, .4);
+    }
+
+    .step-2 .tl-dot {
+      border-color: #34d399;
+      background: rgba(52, 211, 153, .12);
+      box-shadow: 0 0 18px rgba(52, 211, 153, .35);
+    }
+
+    .step-3 .tl-dot {
+      border-color: #facc15;
+      background: rgba(250, 204, 21, .12);
+      box-shadow: 0 0 18px rgba(250, 204, 21, .35);
+    }
+
+    .step-4 .tl-dot {
+      border-color: #fb923c;
+      background: rgba(251, 146, 60, .12);
+      box-shadow: 0 0 18px rgba(251, 146, 60, .35);
+    }
+
+    .step-5 .tl-dot {
+      border-color: #a78bfa;
+      background: rgba(167, 139, 250, .12);
+      box-shadow: 0 0 18px rgba(167, 139, 250, .35);
+    }
+
+    .step-6 .tl-dot {
+      border-color: var(--sunset);
+      background: rgba(232, 131, 74, .15);
+      box-shadow: 0 0 18px var(--sunset-glow);
+    }
+
+    .step-7 .tl-dot {
+      border-color: #f472b6;
+      background: rgba(244, 114, 182, .12);
+      box-shadow: 0 0 18px rgba(244, 114, 182, .35);
+    }
+
+    .tl-row:hover .step-1 .tl-dot,
+    .step-1 .tl-row:hover .tl-dot {
+      box-shadow: 0 0 32px rgba(18, 163, 196, .7);
+    }
+
+    .tl-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px 26px;
+      transition: border-color .3s, transform .3s, background .3s, box-shadow .3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tl-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, .055) 50%, transparent 65%);
+      transform: translateX(-120%);
+      transition: transform .6s ease;
+    }
+
+    .tl-row:hover .tl-card::after {
+      transform: translateX(120%);
+    }
+
+    .step-1 .tl-card:hover {
+      border-color: rgba(18, 163, 196, .45);
+      background: rgba(18, 163, 196, .07);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .3);
+    }
+
+    .step-2 .tl-card:hover {
+      border-color: rgba(52, 211, 153, .40);
+      background: rgba(52, 211, 153, .06);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .3);
+    }
+
+    .step-3 .tl-card:hover {
+      border-color: rgba(250, 204, 21, .40);
+      background: rgba(250, 204, 21, .06);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .3);
+    }
+
+    .step-4 .tl-card:hover {
+      border-color: rgba(251, 146, 60, .40);
+      background: rgba(251, 146, 60, .06);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .3);
+    }
+
+    .step-5 .tl-card:hover {
+      border-color: rgba(167, 139, 250, .40);
+      background: rgba(167, 139, 250, .06);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .3);
+    }
+
+    .step-6 .tl-card:hover {
+      border-color: rgba(232, 131, 74, .45);
+      background: rgba(232, 131, 74, .07);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .3);
+    }
+
+    .step-7 .tl-card:hover {
+      border-color: rgba(244, 114, 182, .40);
+      background: rgba(244, 114, 182, .06);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .3);
+    }
+
+    .tl-time {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .step-1 .tl-time {
+      color: var(--ocean-light);
+    }
+
+    .step-2 .tl-time {
+      color: #34d399;
+    }
+
+    .step-3 .tl-time {
+      color: #facc15;
+    }
+
+    .step-4 .tl-time {
+      color: #fb923c;
+    }
+
+    .step-5 .tl-time {
+      color: #a78bfa;
+    }
+
+    .step-6 .tl-time {
+      color: var(--sunset);
+    }
+
+    .step-7 .tl-time {
+      color: #f472b6;
+    }
+
+    .tl-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .tl-desc {
+      font-size: .84rem;
+      color: rgba(255, 255, 255, .55);
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+
+    .tl-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tl-left .tl-tags {
+      justify-content: flex-end;
+    }
+
+    .tl-tag {
+      font-size: .68rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid var(--border);
+      color: rgba(255, 255, 255, .6);
+      transition: background .2s, color .2s;
+    }
+
+    .tl-card:hover .tl-tag {
+      background: rgba(255, 255, 255, .10);
+      color: rgba(255, 255, 255, .85);
+    }
+
+    /* Summary grid */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 70px;
+    }
+
+    .summary-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px 18px;
+      text-align: center;
+      transition: transform .3s, border-color .3s, background .3s, box-shadow .3s;
+    }
+
+    .summary-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(18, 163, 196, .35);
+      background: rgba(18, 163, 196, .06);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .3);
+    }
+
+    .sc-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .sc-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--sand), var(--sand-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    .sc-lbl {
+      font-size: .74rem;
+      color: rgba(255, 255, 255, .45);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+
+    /* CTA */
+    .cta-strip {
+      background: linear-gradient(135deg, rgba(10, 116, 144, .22), rgba(18, 163, 196, .10));
+      border: 1px solid rgba(18, 163, 196, .22);
+      border-radius: 24px;
+      padding: 42px 40px;
+      text-align: center;
+      margin-top: 70px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-strip::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(18, 163, 196, .07), transparent);
+      pointer-events: none;
+    }
+
+    .cta-strip h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-strip h3 span {
+      color: var(--ocean-light);
+      font-style: italic;
+    }
+
+    .cta-strip p {
+      color: rgba(255, 255, 255, .5);
+      font-size: .95rem;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 42px;
+      background: linear-gradient(135deg, var(--sunset), #d4663a);
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 8px 28px var(--sunset-glow);
+      transition: transform .2s, box-shadow .2s;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .btn-cta::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .18), transparent);
+      transform: translateX(-110%);
+      transition: transform .6s ease;
+    }
+
+    .btn-cta:hover::after {
+      transform: translateX(110%);
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-4px);
+      color: white;
+      box-shadow: 0 16px 44px rgba(232, 131, 74, .55);
+    }
+
+    /* Footer */
+    footer {
+      background: #030b12;
+      padding: 38px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: rgba(255, 255, 255, .38);
+      font-size: .84rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer a {
+      color: var(--ocean-light);
+      text-decoration: none;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .footer-social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, .45);
+      transition: all .25s;
+      text-decoration: none;
+      font-size: .9rem;
+    }
+
+    .footer-social-link:hover {
+      background: var(--ocean-light);
+      border-color: var(--ocean-light);
+      color: white;
+      transform: translateY(-4px) scale(1.1);
+      box-shadow: 0 8px 20px var(--ocean-glow);
+    }
+
+    @media(max-width:768px) {
+      .timeline-wrap::before {
+        left: 24px;
+      }
+
+      .tl-row {
+        grid-template-columns: 50px 1fr;
+        grid-template-rows: auto;
+      }
+
+      .tl-left {
+        display: none;
+      }
+
+      .tl-center {
+        grid-column: 1;
+        grid-row: 1;
+        padding-top: 6px;
+      }
+
+      .tl-right {
+        grid-column: 2;
+        grid-row: 1;
+        padding-left: 16px;
+        text-align: left;
+      }
+
+      .tl-left.empty,
+      .tl-right.empty {
+        display: none;
+      }
+
+      .cta-strip {
+        padding: 28px 20px;
+      }
+    }
+
+    @media(max-width:480px) {
+      .contact-num-btn {
+        font-size: .78rem;
+        padding: 9px 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="sprogress"></div>
+  <nav class="navbar navbar-expand-lg" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="Accueil.html"><span class="wave-icon">🌊</span> <span>Sortie</span> Plage</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"><span
+          class="navbar-toggler-icon" style="filter:invert(1)"></span></button>
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav align-items-center gap-1">
+          <li class="nav-item"><a class="nav-link" href="Accueil.html">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="A propos.html">À propos</a></li>
+          <li class="nav-item"><a class="nav-link" href="Programme.html">Programme</a></li>
+          <li class="nav-item"><a class="nav-link" href="Gallery.html">Galerie</a></li>
+          <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+          <li class="nav-item ms-2"><a class="btn-hero-nav" href="Inscription.html">S'inscrire</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="page-hero">
+    <div class="deco-ring r1"></div>
+    <div class="deco-ring r2"></div>
+    <div class="deco-ring r3"></div>
+    <div class="hero-orb orb-a"></div>
+    <div class="hero-orb orb-b"></div>
+    <div class="container page-hero-content">
+      <p class="hero-eyebrow">Déroulement de la journée</p>
+      <h1 class="hero-h1">Le <span class="shimmer">programme</span><br>de Grand-Bassam</h1>
+      <p class="hero-sub">Du départ au retour — une journée de 11 heures soigneusement organisée pour votre plaisir et
+        votre confort.</p>
+      <div class="hero-pills">
+        <span class="hero-pill"><i class="fas fa-clock"></i> 07h00 – 18h30</span>
+        <span class="hero-pill"><i class="fas fa-calendar-alt"></i> Vendredi 1er Août 2026</span>
+        <span class="hero-pill"><i class="fas fa-list-ul"></i> 7 étapes clés</span>
+        <span class="hero-pill"><i class="fas fa-map-marker-alt"></i> Grand-Bassam, CI</span>
+      </div>
+    </div>
+    <div class="hero-waves"><svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,20 C480,60 960,0 1440,30 L1440,60 L0,60 Z" fill="#081422" />
+      </svg></div>
+  </div>
+  <section id="programme">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <p class="section-label">Programme complet</p>
+        <h2 class="section-title">Votre journée, <span>étape par étape</span></h2>
+        <p style="color:rgba(255,255,255,.45);font-size:.95rem;max-width:500px;margin:0 auto;">Chaque moment a été
+          soigneusement planifié pour que vous profitiez pleinement de cette journée à la plage.</p>
+      </div>
+      <div class="timeline-wrap">
+        <div class="tl-row step-1 reveal from-l">
+          <div class="tl-left">
+            <div class="tl-card">
+              <div class="tl-time">07:00 – 07:30</div>
+              <div class="tl-title">🚌 Rassemblement & Départ</div>
+              <div class="tl-desc">Rendez-vous au point de départ. Embarquement dans le bus collectif climatisé
+                direction Grand-Bassam. Ambiance conviviale dès le matin !</div>
+              <div class="tl-tags"><span class="tl-tag">Bus climatisé</span><span class="tl-tag">Départ
+                  groupé</span><span class="tl-tag">~90 min de route</span></div>
+            </div>
+          </div>
+          <div class="tl-center">
+            <div class="tl-dot">🚌</div>
+          </div>
+          <div class="tl-right empty"></div>
+        </div>
+        <div class="tl-row step-2 reveal from-r">
+          <div class="tl-left empty"></div>
+          <div class="tl-center">
+            <div class="tl-dot">🏖️</div>
+          </div>
+          <div class="tl-right">
+            <div class="tl-card">
+              <div class="tl-time">09:00 – 10:00</div>
+              <div class="tl-title">🏖️ Arrivée & Installation</div>
+              <div class="tl-desc">Accueil chaleureux sur la plage. Installation de l'espace détente, distribution des
+                bracelets et petit-déjeuner collectif pour bien démarrer.</div>
+              <div class="tl-tags"><span class="tl-tag">Petit-déjeuner</span><span class="tl-tag">Accueil
+                  VIP</span><span class="tl-tag">Installation</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-row step-3 reveal from-l">
+          <div class="tl-left">
+            <div class="tl-card">
+              <div class="tl-time">10:00 – 12:30</div>
+              <div class="tl-title">🏐 Jeux & Activités Sportives</div>
+              <div class="tl-desc">Beach-volley, football de plage, jet-ski et baignade libre en mer. Des compétitions
+                amicales animées avec des cadeaux pour les gagnants !</div>
+              <div class="tl-tags"><span class="tl-tag">Beach-volley</span><span class="tl-tag">Jet-ski</span><span
+                  class="tl-tag">Football plage</span><span class="tl-tag">Baignade</span></div>
+            </div>
+          </div>
+          <div class="tl-center">
+            <div class="tl-dot">🏐</div>
+          </div>
+          <div class="tl-right empty"></div>
+        </div>
+        <div class="tl-row step-4 reveal from-r">
+          <div class="tl-left empty"></div>
+          <div class="tl-center">
+            <div class="tl-dot">🍽️</div>
+          </div>
+          <div class="tl-right">
+            <div class="tl-card">
+              <div class="tl-time">13:00 – 14:30</div>
+              <div class="tl-title">🍽️ Déjeuner Convivial</div>
+              <div class="tl-desc">Déjeuner gastronomique ivoirien — attiéké poisson, poulet braisé, alloco et boissons
+                fraîches. Un moment de partage et de convivialité autour de la table.</div>
+              <div class="tl-tags"><span class="tl-tag">Attiéké & poisson</span><span
+                  class="tl-tag">Grillades</span><span class="tl-tag">Boissons incluses</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-row step-5 reveal from-l">
+          <div class="tl-left">
+            <div class="tl-card">
+              <div class="tl-time">14:30 – 15:30</div>
+              <div class="tl-title">😌 Détente & Repos</div>
+              <div class="tl-desc">Temps libre sur la plage — sieste sous les parasols, balade en bord de mer, photos
+                souvenirs ou activités libres. Un moment rien que pour soi.</div>
+              <div class="tl-tags"><span class="tl-tag">Temps libre</span><span class="tl-tag">Photos
+                  souvenirs</span><span class="tl-tag">Espace lounge</span></div>
+            </div>
+          </div>
+          <div class="tl-center">
+            <div class="tl-dot">😌</div>
+          </div>
+          <div class="tl-right empty"></div>
+        </div>
+        <div class="tl-row step-6 reveal from-r">
+          <div class="tl-left empty"></div>
+          <div class="tl-center">
+            <div class="tl-dot">🎵</div>
+          </div>
+          <div class="tl-right">
+            <div class="tl-card">
+              <div class="tl-time">15:30 – 18:00</div>
+              <div class="tl-title">🎵 DJ Set & Animation Finale</div>
+              <div class="tl-desc">DJ set live — afrobeats, coupé-décalé, zouk et musiques ivoiriennes. Concours de
+                danse animés, remise des prix et moments de folie sur le sable !</div>
+              <div class="tl-tags"><span class="tl-tag">DJ live</span><span class="tl-tag">Concours dansants</span><span
+                  class="tl-tag">Cadeaux</span><span class="tl-tag">Ambiance 🔥</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-row step-7 reveal from-l">
+          <div class="tl-left">
+            <div class="tl-card">
+              <div class="tl-time">18:30</div>
+              <div class="tl-title">🌅 Retour vers Abidjan</div>
+              <div class="tl-desc">Retour en bus climatisé vers Abidjan avec des sourires, des souvenirs inoubliables et
+                de nouvelles amitiés. La journée parfaite se termine ici !</div>
+              <div class="tl-tags"><span class="tl-tag">Bus retour</span><span class="tl-tag">Souvenirs 💛</span></div>
+            </div>
+          </div>
+          <div class="tl-center">
+            <div class="tl-dot">🌅</div>
+          </div>
+          <div class="tl-right empty"></div>
+        </div>
+      </div>
+      <div class="summary-grid reveal">
+        <div class="summary-card"><span class="sc-icon">⏰</span>
+          <div class="sc-val" id="sv1">0</div>
+          <div class="sc-lbl">Heures de festivités</div>
+        </div>
+        <div class="summary-card"><span class="sc-icon">🎯</span>
+          <div class="sc-val" id="sv2">0</div>
+          <div class="sc-lbl">Étapes planifiées</div>
+        </div>
+        <div class="summary-card"><span class="sc-icon">🏆</span>
+          <div class="sc-val" id="sv3">0</div>
+          <div class="sc-lbl">Activités incluses</div>
+        </div>
+        <div class="summary-card"><span class="sc-icon">👥</span>
+          <div class="sc-val" id="sv4">0</div>
+          <div class="sc-lbl">Places max</div>
+        </div>
+        <div class="summary-card"><span class="sc-icon">💰</span>
+          <div class="sc-val">5K</div>
+          <div class="sc-lbl">FCFA tout inclus</div>
+        </div>
+      </div>
+      <div class="cta-strip reveal">
+        <h3>Prêt à vivre <span>cette journée</span> avec nous ?</h3>
+        <p>Places limitées · 5 000 FCFA / personne · Transport + repas + activités tout inclus</p>
+        <a href="Inscription.html" class="btn-cta"><i class="fas fa-ticket-alt"></i> Réserver ma place maintenant</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-socials">
+        <a href="#" class="footer-social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="footer-social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/2250173718928" target="_blank" class="footer-social-link" title="WhatsApp"><i
+            class="fab fa-whatsapp"></i></a>
+        <a href="#" class="footer-social-link" title="TikTok"><i class="fab fa-tiktok"></i></a>
+      </div>
+      <p style="margin-bottom:6px;">&copy; 2026 <a href="Accueil.html">Sortie Plage Grand-Bassam</a> — Tous droits
+        réservés</p>
+      <p style="font-size:.78rem;color:rgba(255,255,255,.25);">Vendredi 1er Août 2026 · Grand-Bassam, Côte d'Ivoire</p>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+  <script>
+    window.addEventListener('scroll', () => {
+      const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+      document.getElementById('sprogress').style.width = pct + '%';
+      document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+    const revObs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } }); }, { threshold: .11 });
+    document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+    function countUp(id, target, sfx = '') { const el = document.getElementById(id); if (!el) return; const dur = 1800, step = 16, inc = target / (dur / step); let c = 0; const t = setInterval(() => { c = Math.min(c + inc, target); el.textContent = Math.floor(c) + sfx; if (c >= target) clearInterval(t); }, step); }
+    let counted = false;
+    new IntersectionObserver(entries => { if (entries[0].isIntersecting && !counted) { counted = true; countUp('sv1', 11, 'h'); countUp('sv2', 7); countUp('sv3', 6); countUp('sv4', 50); } }, { threshold: .4 }).observe(document.querySelector('.summary-grid'));
+  </script>
+</body>
+
+</html>

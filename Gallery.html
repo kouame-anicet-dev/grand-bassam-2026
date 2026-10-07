@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galerie – Sortie Plage Grand-Bassam 2026</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --ocean: #0a7490;
+      --ocean-light: #12a3c4;
+      --ocean-glow: rgba(18, 163, 196, 0.20);
+      --sand: #f5deb3;
+      --sand-dark: #d4a96a;
+      --sunset: #e8834a;
+      --sunset-glow: rgba(232, 131, 74, 0.40);
+      --white: #ffffff;
+      --dark: #060f18;
+      --dark2: #081422;
+      --border: rgba(255, 255, 255, 0.09);
+      --card-bg: rgba(255, 255, 255, 0.04);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--dark);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    }
+
+    /* ══ SCROLL PROGRESS ══ */
+    #sprogress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      z-index: 2001;
+      background: linear-gradient(90deg, var(--ocean-light), var(--sunset), var(--sand));
+      width: 0%;
+      border-radius: 0 2px 2px 0;
+      transition: width .1s;
+    }
+
+    /* ══ NAVBAR ══ */
+    .navbar {
+      background: rgba(6, 15, 24, .88) !important;
+      backdrop-filter: blur(22px);
+      padding: 14px 0;
+      position: fixed;
+      width: 100%;
+      top: 3px;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, .07);
+      transition: background .4s, padding .3s, box-shadow .3s;
+    }
+
+    .navbar.scrolled {
+      background: rgba(6, 15, 24, .98) !important;
+      padding: 10px 0;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, .4);
+    }
+
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--sand) !important;
+      letter-spacing: 1px;
+    }
+
+    .navbar-brand span {
+      color: var(--white);
+    }
+
+    .wave-icon {
+      display: inline-block;
+      animation: waveA 2.5s ease-in-out infinite;
+    }
+
+    @keyframes waveA {
+
+      0%,
+      100% {
+        transform: rotate(0)
+      }
+
+      25% {
+        transform: rotate(-15deg)
+      }
+
+      75% {
+        transform: rotate(15deg)
+      }
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, .82) !important;
+      font-weight: 500;
+      font-size: .9rem;
+      margin: 0 4px;
+      transition: color .2s;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: var(--sand);
+      transition: width .3s;
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+    }
+
+    .nav-link:hover {
+      color: var(--sand) !important;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .btn-hero-nav {
+      background: var(--sunset);
+      color: white;
+      border: none;
+      padding: 9px 22px;
+      border-radius: 50px;
+      font-size: .88rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 4px 18px var(--sunset-glow);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .btn-hero-nav:hover {
+      transform: translateY(-2px);
+      color: white;
+      box-shadow: 0 8px 28px var(--sunset-glow);
+    }
+
+    /* ══ PAGE HERO ══ */
+    .page-hero {
+      min-height: 48vh;
+      background: linear-gradient(155deg, #050e18 0%, #083048 55%, #0b5570 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 120px 0 68px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 85% 40%, rgba(18, 163, 196, .14), transparent);
+    }
+
+    .deco-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(18, 163, 196, .10);
+      pointer-events: none;
+    }
+
+    .r1 {
+      width: 420px;
+      height: 420px;
+      top: -130px;
+      right: -100px;
+      animation: spin 28s linear infinite;
+    }
+
+    .r2 {
+      width: 240px;
+      height: 240px;
+      top: 0;
+      right: 80px;
+      border-color: rgba(232, 131, 74, .12);
+      animation: spin 18s linear infinite reverse;
+    }
+
+    .r3 {
+      width: 140px;
+      height: 140px;
+      bottom: 16px;
+      left: 8%;
+      animation: spin 14s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(60px);
+    }
+
+    .orb-a {
+      width: 320px;
+      height: 320px;
+      background: rgba(18, 163, 196, .11);
+      top: 6%;
+      right: 3%;
+      animation: orbF 9s ease-in-out infinite;
+    }
+
+    .orb-b {
+      width: 200px;
+      height: 200px;
+      background: rgba(232, 131, 74, .09);
+      bottom: 14%;
+      left: 5%;
+      animation: orbF 7s ease-in-out infinite 3.5s;
+    }
+
+    @keyframes orbF {
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1)
+      }
+
+      50% {
+        transform: translateY(-30px) scale(1.05)
+      }
+    }
+
+    .page-hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      font-size: .76rem;
+      font-weight: 600;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--ocean-light);
+      margin-bottom: 12px;
+      opacity: 0;
+      transform: translateX(-28px);
+      animation: slideRight .8s .2s ease both;
+    }
+
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.08;
+      opacity: 0;
+      transform: translateY(26px);
+      animation: slideUp .9s .4s ease both;
+    }
+
+    .hero-h1 .shimmer {
+      background: linear-gradient(90deg, var(--ocean-light), #7be8ff, var(--ocean-light));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-style: italic;
+      animation: shimmer 3s linear infinite;
+    }
+
+    @keyframes shimmer {
+      to {
+        background-position: 200% center
+      }
+    }
+
+    .hero-sub {
+      color: rgba(255, 255, 255, .55);
+      font-size: 1rem;
+      margin-top: 14px;
+      font-weight: 300;
+      max-width: 560px;
+      line-height: 1.8;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp .8s .6s ease both;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp .8s .8s ease both;
+    }
+
+    .hero-stat {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, .10);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 50px;
+      padding: 8px 18px;
+      font-size: .84rem;
+      font-weight: 500;
+      transition: background .25s, transform .2s;
+    }
+
+    .hero-stat:hover {
+      background: rgba(255, 255, 255, .20);
+      transform: translateY(-2px);
+    }
+
+    .hero-stat i {
+      color: var(--ocean-light);
+      font-size: .8rem;
+    }
+
+    .hero-waves {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    @keyframes slideRight {
+      from {
+        opacity: 0;
+        transform: translateX(-28px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    /* ══ SCROLL REVEAL ══ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .reveal.d1 {
+      transition-delay: .06s
+    }
+
+    .reveal.d2 {
+      transition-delay: .12s
+    }
+
+    .reveal.d3 {
+      transition-delay: .18s
+    }
+
+    .reveal.d4 {
+      transition-delay: .24s
+    }
+
+    .reveal.d5 {
+      transition-delay: .30s
+    }
+
+    .reveal.d6 {
+      transition-delay: .36s
+    }
+
+    .reveal.d7 {
+      transition-delay: .42s
+    }
+
+    .reveal.d8 {
+      transition-delay: .48s
+    }
+
+    .reveal.d9 {
+      transition-delay: .54s
+    }
+
+    /* ══ GALLERY SECTION ══ */
+    #galerie {
+      background: var(--dark2);
+      padding: 90px 0 110px;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    #galerie::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 250px;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(10, 116, 144, .08), transparent);
+      pointer-events: none;
+    }
+
+    .section-label {
+      font-size: .74rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ocean-light);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .section-title span {
+      color: var(--ocean-light);
+      font-style: italic;
+    }
+
+    /* ══ FILTER BAR ══ */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin: 44px 0 16px;
+    }
+
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-size: .86rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1.5px solid var(--border);
+      background: var(--card-bg);
+      color: rgba(255, 255, 255, .62);
+      font-family: 'DM Sans', sans-serif;
+      transition: all .25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .filter-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .06), transparent);
+      transform: translateX(-100%);
+      transition: transform .5s ease;
+    }
+
+    .filter-btn:hover::after {
+      transform: translateX(100%);
+    }
+
+    .filter-btn:hover {
+      border-color: rgba(18, 163, 196, .4);
+      color: white;
+      background: var(--ocean-glow);
+    }
+
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--ocean), var(--ocean-light));
+      border-color: transparent;
+      color: white;
+      box-shadow: 0 4px 20px rgba(10, 116, 144, .45);
+    }
+
+    .filter-btn i {
+      font-size: .8rem;
+    }
+
+    /* Count bar */
+    .count-bar {
+      text-align: center;
+      font-size: .82rem;
+      color: rgba(255, 255, 255, .38);
+      margin-bottom: 36px;
+      letter-spacing: .5px;
+    }
+
+    .count-bar strong {
+      color: var(--ocean-light);
+      font-weight: 700;
+    }
+
+    /* ══ GALLERY GRID ══ */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .gallery-item {
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      aspect-ratio: 4/3;
+      transition: transform .35s cubic-bezier(.34, 1.56, .64, 1), box-shadow .3s;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .5);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform .5s ease, filter .3s;
+      filter: brightness(.78);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+      filter: brightness(1);
+    }
+
+    /* Overlay */
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(6, 15, 24, .88) 0%, rgba(6, 15, 24, .3) 45%, transparent 70%);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      padding: 20px 22px;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .overlay-cat {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ocean-light);
+      margin-bottom: 4px;
+    }
+
+    .overlay-caption {
+      font-size: .9rem;
+      font-weight: 600;
+      color: white;
+      line-height: 1.3;
+    }
+
+    .overlay-zoom {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .18);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .82rem;
+      color: white;
+      border: 1px solid rgba(255, 255, 255, .25);
+      transition: background .2s, transform .2s;
+    }
+
+    .gallery-item:hover .overlay-zoom {
+      background: var(--ocean-light);
+      transform: scale(1.1);
+    }
+
+    /* Category badge */
+    .gallery-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(6, 15, 24, .75);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, .15);
+      border-radius: 50px;
+      padding: 4px 12px;
+      font-size: .7rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, .82);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: background .2s, border-color .2s;
+    }
+
+    .gallery-badge i {
+      color: var(--ocean-light);
+      font-size: .65rem;
+    }
+
+    .gallery-item:hover .gallery-badge {
+      background: rgba(10, 116, 144, .6);
+      border-color: var(--ocean-light);
+    }
+
+    /* Hidden filtered items */
+    .gallery-item.hidden {
+      display: none;
+    }
+
+    /* ══ LIGHTBOX ══ */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(4, 10, 18, .96);
+      backdrop-filter: blur(14px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .lightbox.open {
+      display: flex;
+      animation: fadeInLB .3s ease both;
+    }
+
+    @keyframes fadeInLB {
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    .lb-inner {
+      max-width: 920px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      position: relative;
+    }
+
+    .lb-img-wrap {
+      position: relative;
+    }
+
+    .lightbox img {
+      max-height: 72vh;
+      max-width: 100%;
+      border-radius: 18px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .65);
+      object-fit: contain;
+      animation: lbZoomIn .3s ease both;
+    }
+
+    @keyframes lbZoomIn {
+      from {
+        opacity: 0;
+        transform: scale(.92)
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1)
+      }
+    }
+
+    .lightbox-caption {
+      text-align: center;
+    }
+
+    .lb-cat {
+      font-size: .72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ocean-light);
+      margin-bottom: 4px;
+    }
+
+    .lb-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .lb-close {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .10);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background .2s, transform .2s;
+    }
+
+    .lb-close:hover {
+      background: rgba(255, 255, 255, .24);
+      transform: rotate(90deg);
+    }
+
+    .lb-nav {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .10);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background .2s;
+    }
+
+    .lb-nav:hover {
+      background: rgba(18, 163, 196, .4);
+    }
+
+    .lb-prev {
+      left: 16px;
+    }
+
+    .lb-next {
+      right: 16px;
+    }
+
+    .lb-counter {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, .08);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 6px 20px;
+      font-size: .82rem;
+      color: rgba(255, 255, 255, .6);
+    }
+
+    /* ══ CTA STRIP ══ */
+    .cta-strip {
+      background: linear-gradient(135deg, rgba(10, 116, 144, .22), rgba(18, 163, 196, .10));
+      border: 1px solid rgba(18, 163, 196, .22);
+      border-radius: 24px;
+      padding: 42px 40px;
+      text-align: center;
+      margin-top: 70px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-strip::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(18, 163, 196, .07), transparent);
+      pointer-events: none;
+    }
+
+    .cta-strip h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-strip h3 span {
+      color: var(--ocean-light);
+      font-style: italic;
+    }
+
+    .cta-strip p {
+      color: rgba(255, 255, 255, .5);
+      font-size: .95rem;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 44px;
+      background: linear-gradient(135deg, var(--sunset), #d4663a);
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 8px 28px var(--sunset-glow);
+      transition: transform .2s, box-shadow .2s;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .btn-cta::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .18), transparent);
+      transform: translateX(-110%);
+      transition: transform .6s ease;
+    }
+
+    .btn-cta:hover::after {
+      transform: translateX(110%);
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-4px);
+      color: white;
+      box-shadow: 0 16px 44px rgba(232, 131, 74, .55);
+    }
+
+    /* ══ FOOTER ══ */
+    footer {
+      background: #030b12;
+      padding: 38px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: rgba(255, 255, 255, .38);
+      font-size: .84rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer a {
+      color: var(--ocean-light);
+      text-decoration: none;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .footer-social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, .45);
+      transition: all .25s;
+      text-decoration: none;
+      font-size: .9rem;
+    }
+
+    .footer-social-link:hover {
+      background: var(--ocean-light);
+      border-color: var(--ocean-light);
+      color: white;
+      transform: translateY(-4px) scale(1.1);
+      box-shadow: 0 8px 20px var(--ocean-glow);
+    }
+
+    /* ══ RESPONSIVE ══ */
+    @media(max-width:900px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width:560px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-strip {
+        padding: 28px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="sprogress"></div>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar navbar-expand-lg" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="Accueil.html"><span class="wave-icon">🌊</span> <span>Sortie</span> Plage</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon" style="filter:invert(1)"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav align-items-center gap-1">
+          <li class="nav-item"><a class="nav-link" href="Accueil.html">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="A propos.html">À propos</a></li>
+          <li class="nav-item"><a class="nav-link" href="Programme.html">Programme</a></li>
+          <li class="nav-item"><a class="nav-link" href="Gallery.html">Galerie</a></li>
+          <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+          <li class="nav-item ms-2"><a class="btn-hero-nav" href="Inscription.html">S'inscrire</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <div class="page-hero">
+    <div class="deco-ring r1"></div>
+    <div class="deco-ring r2"></div>
+    <div class="deco-ring r3"></div>
+    <div class="hero-orb orb-a"></div>
+    <div class="hero-orb orb-b"></div>
+    <div class="container page-hero-content">
+      <p class="hero-eyebrow">Aperçu de l'événement</p>
+      <h1 class="hero-h1">La <span class="shimmer">galerie</span><br>de Grand-Bassam</h1>
+      <p class="hero-sub">Repas savoureux, activités nautiques et moments de détente — découvrez en images ce qui vous
+        attend le Vendredi 1<sup>er</sup> Août 2026.</p>
+      <div class="hero-stats">
+        <span class="hero-stat"><i class="fas fa-images"></i> 12 photos</span>
+        <span class="hero-stat"><i class="fas fa-utensils"></i> Repas & plats</span>
+        <span class="hero-stat"><i class="fas fa-water"></i> Activités nautiques</span>
+        <span class="hero-stat"><i class="fas fa-couch"></i> Espaces détente</span>
+      </div>
+    </div>
+    <div class="hero-waves">
+      <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,20 C480,60 960,0 1440,30 L1440,60 L0,60 Z" fill="#081422" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- ═══ GALERIE ═══ -->
+  <section id="galerie">
+    <div class="container">
+
+      <div class="text-center reveal">
+        <p class="section-label">Galerie photo</p>
+        <h2 class="section-title">Repas, <span>jeux</span> & détente</h2>
+        <p style="color:rgba(255,255,255,.45);font-size:.95rem;max-width:500px;margin:0 auto;">Cliquez sur une photo
+          pour l'agrandir. Filtrez par catégorie pour trouver ce qui vous intéresse le plus.</p>
+      </div>
+
+      <!-- Filter bar -->
+      <div class="filter-bar reveal">
+        <button class="filter-btn active" data-filter="all" onclick="filterGallery('all',this)"><i
+            class="fas fa-border-all"></i> Tout voir</button>
+        <button class="filter-btn" data-filter="repas" onclick="filterGallery('repas',this)"><i
+            class="fas fa-utensils"></i> Repas & plats</button>
+        <button class="filter-btn" data-filter="activite" onclick="filterGallery('activite',this)"><i
+            class="fas fa-water"></i> Activités</button>
+        <button class="filter-btn" data-filter="detente" onclick="filterGallery('detente',this)"><i
+            class="fas fa-couch"></i> Détente</button>
+      </div>
+
+      <!-- Count -->
+      <div class="count-bar reveal"><strong id="countDisplay">12</strong> photo(s) affichée(s)</div>
+
+      <!-- Grid -->
+      <div class="gallery-grid" id="galleryGrid">
+
+        <!-- REPAS -->
+        <div class="gallery-item reveal d1" data-cat="repas" data-caption="Attiéké Poisson & Alloco">
+          <img src="images/plat.jpg" alt="Attiéké Poisson & Alloco" loading="lazy" />
+          <div class="gallery-badge"><i class="fas fa-utensils"></i> Repas</div>
+          <div class="gallery-overlay">
+            <div class="overlay-cat">Repas</div>
+            <div class="overlay-caption">Attiéké Poisson & Alloco</div>
+            <div class="overlay-zoom"><i class="fas fa-expand-alt"></i></div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal d2" data-cat="repas" data-caption="Poulet Braisé & Frites">
+          <img src="images/Plat1.jpg" alt="Poulet Braisé & Frites" loading="lazy" />
+          <div class="gallery-badge"><i class="fas fa-utensils"></i> Repas</div>
+          <div class="gallery-overlay">
+            <div class="overlay-cat">Repas</div>
+            <div class="overlay-caption">Poulet Braisé & Frites</div>
+            <div class="overlay-zoom"><i class="fas fa-expand-alt"></i></div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal d3" data-cat="repas" data-caption="Pain Frites & Jus Frais">
+          <img src="images/fruit.jpg" alt="Pain Frites & Jus Frais" loading="lazy" />
+          <div class="gallery-badge"><i class="fas fa-utensils"></i> Repas</div>
+          <div class="gallery-overlay">
+            <div class="overlay-cat">Repas</div>
+            <div class="overlay-caption">Pain Frites & Jus Frais</div>
+            <div class="overlay-zoom"><i class="fas fa-expand-alt"></i></div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal d4" data-cat="repas" data-caption="Panier de Pique-nique">
+          <img src="images/plat4.jpg" alt="Panier de Pique-nique" loading="lazy" />
+          <div class="gallery-badge"><i class="fas fa-utensils"></i> Repas</div>
+          <div class="gallery-overlay">
+            <div class="overlay-cat">Repas</div>
+            <div class="overlay-caption">Panier de Pique-nique</div>
+            <div class="overlay-zoom"><i class="fas fa-expand-alt"></i></div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal d5" data-cat="repas" data-caption="Plateau de Fruits Frais">
+          <img src="images/plat5.jpg" alt="Plateau de Fruits Frais" loading="lazy" />
+          <div class="gallery-badge"><i class="fas fa-utensils"></i> Repas</div>
+          <div class="gallery-overlay">
+            <div class="overlay-cat">Repas</div>
+            <div class="overlay-caption">Plateau de Fruits Frais</div>
+            <div class="overlay-zoom"><i class="fas fa-expand-alt"></i></div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal d6" data-cat="repas" data-caption="Buffet de Plage">
+          <img src="images/Ima4.png" alt="Buffet de Plage" loading="lazy" />
+          <div class="gallery-badge"><i class="fas fa-utensils"></i> Repas</div>
+          <div class="gallery-overlay">
+            <div class="overlay-cat">Repas</div>
+            <div class="overlay-caption">Buffet de Plage</div>
+            <div class="overlay-zoom"><i class="fas fa-expand-alt"></i></div>
+          </div>
+        </div>
+
+        <!-- ACTIVITÉS -->
+        <div class="gallery-item reveal d1" data-cat="activite" data-caption="Jet-ski — Sensations garanties">
+          <img src="images/AC0.png" alt="Jet-ski" loading="lazy" />
+          <div class="gallery-badge"><i class="fas fa-water"></i> Activité</div>
+          <div class="gallery-overlay">
+            <div class="overlay-cat">Activité</div>
+            <div class="overlay-caption">Jet-ski — Sensations garanties</div>
+            <div class="overlay-zoom"><i class="fas fa-expand-alt"></i></div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal d2" data-cat="activite" data-caption="Balade en Mer">
+          <img src="images/Ac1.jpg" alt="Balade en Mer" loading="lazy" />
+          <div class="gallery-badge"><i class="fas fa-water"></i> Activité</div>
+          <div class="gallery-overlay">
+            <div class="overlay-cat">Activité</div>
+            <div class="overlay-caption">Balade en Mer</div>
+            <div class="overlay-zoom"><i class="fas fa-expand-alt"></i></div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal d3" data-cat="activite" data-caption="Beach-Volley sur le Sable">
+          <img src="images/Ac2.jpg" alt="Beach-Volley" loading="lazy" />
+          <div class="gallery-badge"><i class="fas fa-volleyball-ball"></i> Activité</div>
+          <div class="gallery-overlay">
+            <div class="overlay-cat">Activité</div>
+            <div class="overlay-caption">Beach-Volley sur le Sable</div>
+            <div class="overlay-zoom"><i class="fas fa-expand-alt"></i></div>
+          </div>
+        </div>
+
+        <!-- DÉTENTE -->
+        <div class="gallery-item reveal d4" data-cat="detente" data-caption="Espace Détente Privé">
+          <img src="Tofs/apparte.jpg" alt="Espace Détente" loading="lazy" />
+          <div class="gallery-badge"><i class="fas fa-couch"></i> Détente</div>
+          <div class="gallery-overlay">
+            <div class="overlay-cat">Détente</div>
+            <div class="overlay-caption">Espace Détente Privé</div>
+            <div class="overlay-zoom"><i class="fas fa-expand-alt"></i></div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal d5" data-cat="detente" data-caption="Table avec Vue sur la Mer">
+          <img src="Tofs/cocoktail1.jpg" alt="Table vue mer" loading="lazy" />
+          <div class="gallery-badge"><i class="fas fa-couch"></i> Détente</div>
+          <div class="gallery-overlay">
+            <div class="overlay-cat">Détente</div>
+            <div class="overlay-caption">Table avec Vue sur la Mer</div>
+            <div class="overlay-zoom"><i class="fas fa-expand-alt"></i></div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal d6" data-cat="detente" data-caption="Salon Panoramique en Bord de Mer">
+          <img src="Tofs/chambre2.jpg" alt="Salon panoramique" loading="lazy" />
+          <div class="gallery-badge"><i class="fas fa-couch"></i> Détente</div>
+          <div class="gallery-overlay">
+            <div class="overlay-cat">Détente</div>
+            <div class="overlay-caption">Salon Panoramique en Bord de Mer</div>
+            <div class="overlay-zoom"><i class="fas fa-expand-alt"></i></div>
+          </div>
+        </div>
+
+      </div><!-- /gallery-grid -->
+
+      <!-- CTA -->
+      <div class="cta-strip reveal">
+        <h3>Envie de <span>vivre ça</span> en vrai ?</h3>
+        <p>Inscrivez-vous maintenant — places limitées à 50 personnes · 5 000 FCFA tout inclus</p>
+        <a href="Inscription.html" class="btn-cta"><i class="fas fa-paper-plane"></i> Réserver ma place</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ LIGHTBOX ═══ -->
+  <div class="lightbox" id="lightbox">
+    <div class="lb-close" onclick="closeLightbox()" title="Fermer"><i class="fas fa-times"></i></div>
+    <div class="lb-nav lb-prev" onclick="prevPhoto()" title="Précédent"><i class="fas fa-chevron-left"></i></div>
+    <div class="lb-nav lb-next" onclick="nextPhoto()" title="Suivant"><i class="fas fa-chevron-right"></i></div>
+    <div class="lb-inner">
+      <div class="lb-img-wrap">
+        <img id="lbImg" src="" alt="" />
+      </div>
+      <div class="lightbox-caption">
+        <div class="lb-cat" id="lbCat"></div>
+        <div class="lb-title" id="lbTitle"></div>
+      </div>
+    </div>
+    <div class="lb-counter" id="lbCounter">1 / 12</div>
+  </div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-socials">
+        <a href="#" class="footer-social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="footer-social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/2250173718928" target="_blank" class="footer-social-link" title="WhatsApp"><i
+            class="fab fa-whatsapp"></i></a>
+        <a href="#" class="footer-social-link" title="TikTok"><i class="fab fa-tiktok"></i></a>
+      </div>
+      <p style="margin-bottom:6px;">&copy; 2026 <a href="Accueil.html">Sortie Plage Grand-Bassam</a> — Tous droits
+        réservés</p>
+      <p style="font-size:.78rem;color:rgba(255,255,255,.25);">Vendredi 1<sup>er</sup> Août 2026 · Grand-Bassam, Côte
+        d'Ivoire</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+  <script>
+    /* ── Scroll progress + navbar ── */
+    window.addEventListener('scroll', () => {
+      const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+      document.getElementById('sprogress').style.width = pct + '%';
+      document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    /* ── Scroll Reveal ── */
+    const revObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } });
+    }, { threshold: .10 });
+    document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+    /* ── Gallery index ── */
+    const allItems = Array.from(document.querySelectorAll('.gallery-item'));
+    let visibleItems = [...allItems];
+    let currentIndex = 0;
+
+    /* ── Filter ── */
+    function filterGallery(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      allItems.forEach(item => {
+        const match = cat === 'all' || item.dataset.cat === cat;
+        item.classList.toggle('hidden', !match);
+      });
+
+      visibleItems = allItems.filter(i => !i.classList.contains('hidden'));
+      document.getElementById('countDisplay').textContent = visibleItems.length;
+
+      /* Re-assign click handlers with updated indices */
+      visibleItems.forEach((item, idx) => {
+        item.onclick = () => openLightbox(idx);
+      });
+    }
+
+    /* Init clicks */
+    filterGallery('all', document.querySelector('.filter-btn[data-filter="all"]'));
+
+    /* ── Lightbox ── */
+    function openLightbox(idx) {
+      currentIndex = idx;
+      renderPhoto();
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function renderPhoto() {
+      const item = visibleItems[currentIndex];
+      if (!item) return;
+      const img = item.querySelector('img');
+      const lbImg = document.getElementById('lbImg');
+      lbImg.style.animation = 'none';
+      lbImg.offsetHeight; /* reflow */
+      lbImg.style.animation = 'lbZoomIn .3s ease both';
+      lbImg.src = img.src;
+      lbImg.alt = item.dataset.caption;
+      document.getElementById('lbCat').textContent = item.dataset.cat.charAt(0).toUpperCase() + item.dataset.cat.slice(1);
+      document.getElementById('lbTitle').textContent = item.dataset.caption;
+      document.getElementById('lbCounter').textContent = `${currentIndex + 1} / ${visibleItems.length}`;
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function nextPhoto() { currentIndex = (currentIndex + 1) % visibleItems.length; renderPhoto(); }
+    function prevPhoto() { currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length; renderPhoto(); }
+
+    /* Click outside closes */
+    document.getElementById('lightbox').addEventListener('click', function (e) {
+      if (e.target === this) closeLightbox();
+    });
+
+    /* Keyboard navigation */
+    document.addEventListener('keydown', e => {
+      if (!document.getElementById('lightbox').classList.contains('open')) return;
+      if (e.key === 'ArrowRight') nextPhoto();
+      if (e.key === 'ArrowLeft') prevPhoto();
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    /* Touch swipe in lightbox */
+    let lbTouchX = 0;
+    document.getElementById('lightbox').addEventListener('touchstart', e => { lbTouchX = e.touches[0].clientX; }, { passive: true });
+    document.getElementById('lightbox').addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - lbTouchX;
+      if (Math.abs(dx) > 50) dx < 0 ? nextPhoto() : prevPhoto();
+    }, { passive: true });
+  </script>
+</body>
+
+</html>
